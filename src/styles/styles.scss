@@ -1,3 +1,7 @@
-@import './reset';
+@import './config';
 
-@import './header';
+@import './libs/reset';
+
+@import './base/base-elements.scss';
+
+@import './components/header';
