@@ -2,11 +2,12 @@
 	align-items: center;
 	display: flex;
 	justify-content: space-between;
-	gap: 50px;
+	gap: 3rem;
 }
 
 .siteHeader-nav {
 	align-content: center;
 	display: flex;
+	font-family: $headings-sans;
 	gap: 1rem;
 }
