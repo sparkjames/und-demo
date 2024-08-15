@@ -1,6 +1,6 @@
 *, :after, :before {
   box-sizing: border-box;
-  text-rendering: optimizeLegibility;
+  text-rendering: optimizelegibility;
   -webkit-overflow-scrolling: touch;
   -webkit-text-size-adjust: none;
   outline: none;
@@ -43,5 +43,18 @@ table {
 
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
   display: block;
+}
+
+.siteHeader {
+  justify-content: space-between;
+  align-items: center;
+  gap: 50px;
+  display: flex;
+}
+
+.siteHeader-nav {
+  align-content: center;
+  gap: 1rem;
+  display: flex;
 }
 /*# sourceMappingURL=index.867122b9.css.map */
