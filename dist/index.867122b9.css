@@ -61,13 +61,13 @@ body {
 }
 
 a {
-  color: #f0f;
+  color: #009a44;
   text-decoration: none;
   transition: color .1s linear;
 }
 
 a:hover {
-  color: #ff0;
+  color: #aeaeae;
   text-decoration: underline;
 }
 
@@ -135,6 +135,12 @@ kbd {
   line-height: 1;
   display: inline-block;
   box-shadow: 0 1px 1px #0003, inset 0 2px #ffffffb3;
+}
+
+.container {
+  max-width: calc(1280px + 4rem);
+  margin: 0 auto;
+  padding: 0 2rem;
 }
 
 .siteHeader-container {
