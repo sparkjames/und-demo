@@ -19,7 +19,7 @@ const Hero = () => {
 						<img className="hero-backgroundImage" src={backgroundImage} width="1280" height="720" alt="TODO temporary placeholder" />
 						}
 
-						<div className="hero-messageContainer container">
+						<div className="hero-messageContainer">
 							<h2 className="hero-heading">{heading}</h2>
 							{ subheading && 
 							<p className="hero-subheading">{subheading}</p>
