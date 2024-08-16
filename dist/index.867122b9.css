@@ -143,10 +143,16 @@ kbd {
   padding: 0 2rem;
 }
 
+.siteHeader {
+  border-bottom: 1px solid #aeaeae;
+}
+
 .siteHeader-container {
   justify-content: space-between;
   align-items: center;
   gap: 3rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
   display: flex;
 }
 
