@@ -22,11 +22,15 @@ const RecentPosts = () => {
 
 	return (
 		<section className="recentPosts">
-      { posts && posts.map( (thisPost) => {
-				return (
-					<PostCard key={thisPost.id} post={thisPost}></PostCard>
-				);
-			})}
+			<div className="recentPosts-container container">
+
+				{ posts && posts.map( (thisPost) => {
+					return (
+						<PostCard key={thisPost.id} post={thisPost}></PostCard>
+					);
+				})}
+
+			</div>
     </section>
 	);
 };
