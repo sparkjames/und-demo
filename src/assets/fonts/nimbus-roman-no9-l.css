@@ -1,0 +1,13 @@
+@font-face {
+  font-family: 'Nimbus Roman No9 L Regular';
+  font-style: normal;
+  font-weight: 400;
+  src: url('./nimbus-roman-no9-l.regular.otf');
+}
+
+@font-face {
+  font-family: 'Nimbus Roman No9 L Bold';
+  font-style: normal;
+  font-weight: 700;
+  src: url('./nimbus-roman-no9-l.bold.otf');
+}
