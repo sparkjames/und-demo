@@ -1,5 +1,8 @@
-import { useEffect, useState } from 'react';
 import './recentPosts.styles.scss';
+
+import { useEffect, useState } from 'react';
+
+import PostCard from '../postCard/postCard.component';
 
 const RecentPosts = () => {
 
@@ -21,7 +24,7 @@ const RecentPosts = () => {
 		<section className="recentPosts">
       { posts && posts.map( (thisPost) => {
 				return (
-					<p>{thisPost.message}</p>
+					<PostCard key={thisPost.id} post={thisPost}></PostCard>
 				);
 			})}
     </section>
