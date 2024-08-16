@@ -8,7 +8,7 @@ const Header = () => {
 		<header className="siteHeader">
 			<div className="siteHeader-container container">
 
-				<a href="#0" className="siteHeader-logoLink" title="University of North Dakota Homepage">
+				<a href="/" className="siteHeader-logoLink" title="University of North Dakota Homepage">
 					<Logo></Logo>
 				</a>
 

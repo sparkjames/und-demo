@@ -1,0 +1,7 @@
+.container {
+	margin: 0 auto;
+	max-width: calc(#{$container-default} + #{$container-padding-default*2});
+	padding: 0 $container-padding-default;
+}
+
+// Add more as needed, e.g., .container-wide, .container-header, .container-small, etc.
