@@ -1,7 +1,13 @@
 @import '../../assets/styles/config';
 
 .siteHeader {
+	background-color: $lightest;
 	border-bottom: 1px solid $color-secondary;
+	left: 0;
+	position: fixed;
+	top: 0;
+	width: 100%;
+	z-index: 50;
 }
 
 .siteHeader-container {
