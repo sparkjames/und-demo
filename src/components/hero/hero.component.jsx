@@ -6,27 +6,36 @@ const Hero = () => {
 	return (
 		<section className="hero">
 
-			<h1 className="hero-primaryHeading">
+			<h1 className="hero-primaryHeading container">
 				{HeroContent.primaryHeading}
 			</h1>
 
 			{ HeroContent.content.map( (heroSection, i) => {
-				const { heading, subheading, description, backgroundImage, backgroundColor } = heroSection;
+				const { heading, subheading, description, contentImage, backgroundImage, backgroundColor, textColor } = heroSection;
 				return (
-					<div key={i} className={`hero-message hero-message-${i}`} style={{backgroundColor: backgroundColor}}>
-						
-						{ backgroundImage &&
-						<img className="hero-backgroundImage" src={backgroundImage} width="1280" height="720" alt="TODO temporary placeholder" />
-						}
+					<div key={i} className={`hero-message hero-message-${i} hero-message--${textColor}`} style={{backgroundColor: backgroundColor}}>
+						<div className="hero-messageContainer container">
 
-						<div className="hero-messageContainer">
-							<h2 className="hero-heading">{heading}</h2>
-							{ subheading && 
-							<p className="hero-subheading">{subheading}</p>
+							{ backgroundImage &&
+							<div className="hero-backgroundImageContainer">
+								<img className="hero-backgroundImage" src={ backgroundImage } width="1280" height="720" alt="TODO temporary placeholder" />
+							</div>
 							}
-							<p className="hero-description">{description}</p>
-						</div>
 
+							<div className="hero-contentContainer">
+
+								{ contentImage &&
+								<img className="hero-contentImage" src={ contentImage } width="268" height="400" alt="TODO temporary placeholder" />
+								}
+
+								<h2 className="hero-heading">{heading}</h2>
+								{ subheading && 
+								<p className="hero-subheading">{subheading}</p>
+								}
+								<p className="hero-description">{description}</p>
+							</div>
+
+						</div>
 					</div>
 				);
 			}) }

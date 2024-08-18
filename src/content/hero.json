@@ -5,29 +5,37 @@
 			"heading": "President's Endorsement",
 			"subheading": "Message from the President",
 			"description": "We are thrilled to announce our unwavering support for the University's latest social media campaign. This initiative signifies a crucial opportunity for our community to unite, interact, and effect significant change. Have thoughts or feedback on our campaign goals? We'd love to hear from you!",
-			"backgroundImage": "https://picsum.photos/1280/720",
-			"backgroundColor": "#009A44"
+			"contentImage": "",
+			"backgroundImage": "/assets/images/andrew-armacost-hero-size-200204.jpg",
+			"backgroundColor": "#009A44",
+			"textColor": "light"
 		},
 		{
 			"heading": "Campaign Goals",
 			"subheading": "Empowering Engagement:",
 			"description": "Our primary aim is to foster a vibrant online community where every voice is heard and valued. Through active participation and collaboration, we can amplify our collective impact and bring about positive change.",
-			"backgroundImage": "https://picsum.photos/1600/900",
-			"backgroundColor": "#000000"
+			"contentImage": "",
+			"backgroundImage": "https://picsum.photos/900/1100",
+			"backgroundColor": "#000000",
+			"textColor": "light"
 		},
 		{
 			"heading": "Promoting Diversity and Inclusion:",
 			"subheading": "",
 			"description": "Diversity is our strength, and inclusivity is our foundation. We strive to create an inclusive online space that celebrates diverse perspectives, cultures, and experiences. Together, we can build a community where everyone feels welcome and respected.",
-			"backgroundImage": "https://picsum.photos/1920/1080",
-			"backgroundColor": "#009A44"
+			"contentImage": "",
+			"backgroundImage": "https://picsum.photos/800/1000",
+			"backgroundColor": "#009A44",
+			"textColor": "light"
 		},
 		{
 			"heading": "Driving Innovation:",
 			"subheading": "",
 			"description": "Innovation drives progress, and social media is a powerful tool for sparking creativity and innovation. We encourage innovative thinking and bold ideas that push the boundaries of what's possible. Let's harness the power of social media to drive positive change and innovation in our community and beyond.",
-			"backgroundImage": "https://picsum.photos/1440/810",
-			"backgroundColor": "#AEAEAE"
+			"contentImage": "",
+			"backgroundImage": "https://picsum.photos/960/1200",
+			"backgroundColor": "#AEAEAE",
+			"textColor": "dark"
 		}
 	],
 	"cta": {
