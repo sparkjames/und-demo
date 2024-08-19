@@ -8,16 +8,17 @@ const PostCard = ( {post} ) => {
 	// Format the date to be more readable.
 	const dateObj = new Date( date );
 	const humanReadableDate = dateObj.toLocaleDateString( 'en-US', {
-		year: 'numeric',
-		month: 'long',
-		day: 'numeric'
+		dateStyle: "medium",
 	});
-	const humanReadableTime = dateObj.toLocaleTimeString( 'en-US' );
+	const humanReadableTime = dateObj.toLocaleTimeString( 'en-US', {
+		timeStyle: "short"
+	} );
 
 	return (
 		<article className="postCard">
 			<header className="postCard-header">
-				<p className="postCard-date">{ `${humanReadableDate}, ${humanReadableTime}` }</p>
+				<p className="postCard-date">{ `${humanReadableDate} at ${humanReadableTime}` }</p>
+				<p className="postCard-location">{ location }</p>
 			</header>
 
 			<p className="postCard-message">{ message }</p>
@@ -32,7 +33,6 @@ const PostCard = ( {post} ) => {
 					}
 					<h4 className="postCard-author">{ author }</h4>
 					<p className="postCard-username">@{ username }</p>
-					<p className="postCard-location">{ location }</p>
 				</div>
 
 				<div className="postCard-engagement">

@@ -40,11 +40,17 @@ const RecentPosts = () => {
 		<section className="recentPosts">
 			<div className="recentPosts-container container">
 
-				{ posts && posts.map( (thisPost) => {
+				<h2 className="recentPosts-primaryHeading">Recent Posts</h2>
+
+				{ posts && 
+				<div className="recentPosts-grid">
+					{ posts && posts.map( (thisPost) => {
 					return (
 						<PostCard key={thisPost.id} post={thisPost}></PostCard>
 					);
 				})}
+				</div>
+				}
 
 			</div>
     </section>

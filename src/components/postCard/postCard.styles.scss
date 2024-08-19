@@ -1,0 +1,89 @@
+@import '../../assets/styles/config';
+
+.postCard {
+	background-color: $lightest;
+	padding: 2rem;
+}
+
+.postCard-header {
+	color: $color-secondary;
+	font-family: $serif;
+	font-size: 1.4rem;
+	display: flex;
+	gap: 1rem;
+}
+
+.postCard-date {
+
+}
+
+.postCard-location {
+	display: contents;
+	&::before {
+		content: '|';
+	}
+}
+
+.postCard-message {
+	font-size: 1.8rem;
+	margin-bottom: 1em;
+}
+
+.postCard-userInfo {
+	display: grid;
+	column-gap: 2rem;
+	row-gap: 0.5rem;
+	grid-template-columns: 80px 1fr;
+	margin-bottom: 2rem;
+	width: fit-content;
+}
+
+.postCard-figure {
+	grid-column: 1 / 2;
+	grid-row: 1 / 4;
+}
+
+.postCard-image {
+	display: block;
+	height: auto;
+	width: 100%;
+}
+
+.postCard-author {
+	grid-column: 2 / 3;
+	grid-row: 1 / 2;
+	margin-bottom: 0;
+}
+
+.postCard-username {
+	grid-column: 2 / 3;
+	grid-row: 2 / 3;
+}
+
+// .postCard-location {
+// 	grid-column: 2 / 3;
+// 	grid-row: 3 / 4;
+// }
+
+
+
+.postCard-engagement {
+	display: flex;
+	gap: 2rem;
+}
+
+.postCard-likes {
+	&::before {
+		content: '👍';
+		display: inline-block;
+		margin-right: 0.5em;
+	}
+}
+
+.postCard-reposts {
+	&::before {
+		content: '🖥️';
+		display: inline-block;
+		margin-right: 0.5em;
+	}
+}
