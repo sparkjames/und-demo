@@ -4,6 +4,9 @@ import { useEffect, useState } from 'react';
 
 import PostCard from '../postCard/postCard.component';
 
+// TODO
+// https://github.com/andreasbm/masonry-layout
+
 const RecentPosts = () => {
 
 	const [posts, setPosts] = useState([]);
