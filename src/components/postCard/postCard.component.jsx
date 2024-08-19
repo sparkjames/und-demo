@@ -3,7 +3,7 @@ import './postCard.styles.scss';
 const PostCard = ( {post} ) => {
 
 	// Pull all of the post properties.
-	const { id, date, message, author, image, username, location, likes, reposts } = post;
+	const { date, message, author, image, username, location, likes, reposts } = post;
 
 	// Format the date to be more readable.
 	const dateObj = new Date( date );
