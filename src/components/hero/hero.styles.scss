@@ -41,7 +41,28 @@
 	height: 90vh;
 	min-height: 820px;
 	position: relative;
+	// position: absolute;
+	// left: 0;
+	// top: 0;
+	// width: 100%;
+	transition: transform 500ms ease-out;
 }
+
+// .hero-message-0 {
+// 	transform: translate3d(-75%, 0, 0);
+// }
+
+// .hero-message-1 {
+// 	transform: translate3d(-101%, 0, 0);
+// }
+
+// .hero-message-2 {
+// 	transform: translate3d(-101%, 0, 0);
+// }
+
+// .hero-message-3 {
+// 	transform: translate3d(-101%, 0, 0);
+// }
 
 .hero-message--light {
 	color: $lightest;
@@ -124,4 +145,20 @@
 
 .hero-description {
 	font-size: 1.8rem;
+}
+
+
+
+// .hero-cta {
+
+// }
+
+.hero-ctaLink {
+	background-color: #f0f;
+	color: $lightest;
+	display: inline-block;
+	padding: 1em;
+	position: absolute;
+	bottom: -1.5em;
+	right: 0;
 }

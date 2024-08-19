@@ -41,7 +41,7 @@ const Hero = () => {
 			}) }
 
 			<div className="hero-cta">
-				<a href={HeroContent.cta.url}className="hero-ctaLink">{HeroContent.cta.title}</a>
+				<a href={HeroContent.cta.url} className="hero-ctaLink">{HeroContent.cta.title}</a>
 			</div>
 
     </section>
