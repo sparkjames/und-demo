@@ -2,15 +2,21 @@
 
 .postCard {
 	background-color: $lightest;
-	padding: 2rem;
+	box-shadow: 0 1px 15px 3px rgba(0,0,0, 0.12);
 }
 
 .postCard-header {
-	color: $color-secondary;
-	font-family: $serif;
+	background-color: $color-secondary;
+	// color: $color-secondary;
+	// font-family: $serif;
 	font-size: 1.4rem;
 	display: flex;
 	gap: 1rem;
+	margin-bottom: 1rem;
+	padding-bottom: 2rem;
+	padding-left: 2rem;
+	padding-right: 2rem;
+	padding-top: 2rem;
 }
 
 .postCard-date {
@@ -27,6 +33,8 @@
 .postCard-message {
 	font-size: 1.8rem;
 	margin-bottom: 1em;
+	padding-left: 2rem;
+	padding-right: 2rem;
 }
 
 .postCard-userInfo {
@@ -67,6 +75,13 @@
 // }
 
 
+
+.postCard-footer {
+	padding-bottom: 2rem;
+	padding-left: 2rem;
+	padding-right: 2rem;
+	padding-top: 2rem;
+}
 
 .postCard-engagement {
 	display: flex;

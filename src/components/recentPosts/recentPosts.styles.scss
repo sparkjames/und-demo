@@ -1,5 +1,11 @@
 @import '../../assets/styles/config';
 
 .recentPosts {
-	background-color: $color-secondary;
+	// background-color: $color-secondary;
+	padding-bottom: 6rem;
+	padding-top: 6rem;
+}
+
+.recentPosts-primaryHeading {
+	margin-bottom: 0.4em;
 }
