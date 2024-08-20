@@ -31,9 +31,9 @@
 
 .postCard-userInfo {
 	display: grid;
-	column-gap: 2rem;
-	row-gap: 0.5rem;
-	grid-template-columns: 80px 1fr;
+	column-gap: 1.2rem;
+	row-gap: 0.25rem;
+	grid-template-columns: clamp(40px, 20%, 80px) 1fr;
 	margin-bottom: 2rem;
 	width: fit-content;
 }
@@ -52,6 +52,7 @@
 .postCard-author {
 	grid-column: 2 / 3;
 	grid-row: 1 / 2;
+	line-height: 1.2;
 	margin-bottom: 0;
 }
 

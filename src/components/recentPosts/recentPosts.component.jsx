@@ -4,6 +4,9 @@ import { useEffect, useState } from 'react';
 
 import PostCard from '../postCard/postCard.component';
 
+// https://blog.logrocket.com/create-responsive-masonry-layouts-react-app/
+import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
+
 // TODO
 // https://github.com/andreasbm/masonry-layout
 
@@ -43,13 +46,17 @@ const RecentPosts = () => {
 				<h2 className="recentPosts-primaryHeading">Recent Posts</h2>
 
 				{ posts && 
-				<div className="recentPosts-grid">
-					{ posts && posts.map( (thisPost) => {
-					return (
-						<PostCard key={thisPost.id} post={thisPost}></PostCard>
-					);
-				})}
-				</div>
+				<ResponsiveMasonry
+        columnsCountBreakPoints={{ 500: 2, 850: 3, 1250: 4 }}
+      	>
+					<Masonry columnsCount={4} gutter="40px" className="recentPosts-grid">
+						{ posts && posts.map( (thisPost) => {
+						return (
+							<PostCard key={thisPost.id} post={thisPost}></PostCard>
+						);
+					})}
+					</Masonry>
+				</ResponsiveMasonry>
 				}
 
 			</div>
