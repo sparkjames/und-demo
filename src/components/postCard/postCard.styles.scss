@@ -1,5 +1,10 @@
 @import '../../assets/styles/config';
 
+@mixin postCard-padding() {
+	padding-left: 2rem;
+	padding-right: 2rem;
+}
+
 .postCard {
 	background-color: $lightest;
 	box-shadow: 0 1px 15px 3px rgba(0,0,0, 0.12);
@@ -20,24 +25,26 @@
 }
 
 .postCard-date {
-
+	// display: inline;
 }
 
 .postCard-location {
-	display: contents;
-	&::before {
-		content: '|';
-	}
+	// display: inline;
+	// display: contents;
+	// &::before {
+	// 	content: '📍';
+	// }
 }
 
 .postCard-message {
+	@include postCard-padding();
 	font-size: 1.8rem;
 	margin-bottom: 1em;
-	padding-left: 2rem;
-	padding-right: 2rem;
+	padding-top: 2rem;
 }
 
 .postCard-userInfo {
+	@include postCard-padding();
 	display: grid;
 	column-gap: 1.2rem;
 	row-gap: 0.25rem;
@@ -77,10 +84,11 @@
 
 
 .postCard-footer {
-	padding-bottom: 2rem;
-	padding-left: 2rem;
-	padding-right: 2rem;
-	padding-top: 2rem;
+	@include postCard-padding();
+	background-color: #ddd;
+	font-size: 1.4rem;
+	padding-bottom: 1.4rem;
+	padding-top: 1.4rem;
 }
 
 .postCard-engagement {
@@ -88,18 +96,104 @@
 	gap: 2rem;
 }
 
-.postCard-likes {
+.postCard-tooltip {
+	background-color: $darkest;
+	border-radius: 3px;
+	bottom: calc(100% + 1.2em);
+	color: $lightest;
+	font-size: 1.4rem;
+	left: 0;
+	opacity: 0;
+	padding: .5em 1em;
+	pointer-events: none;
+	position: absolute;
+	text-align: center;
+	transform: translate3d(0, -1rem, 0);
+	transition: opacity 150ms ease-out, transform 150ms ease-out, border-color 150ms ease-out;
+	width: fit-content;
+
 	&::before {
-		content: '👍';
-		display: inline-block;
-		margin-right: 0.5em;
+		border-left: 10px solid transparent;
+		border-right: 10px solid transparent;
+		border-top: 10px solid $darkest;
+		bottom: -10px;
+		content: '';
+		display: block;
+		height: 1px;
+		left: 1rem;
+		position: absolute;
+		width: 1px;
 	}
 }
 
-.postCard-reposts {
+.postCard-engagementButton {
+	align-items: center;
+	appearance: none;
+	border: 1px solid $lightest;
+	border-radius: 50%;
+	cursor: pointer;
+	display: flex;
+	font-size: 2rem;
+	height: 2em;
+	justify-content: center;
+	position: relative;
+	width: 2em;
+
+	&:hover,
+	&:focus {
+		border-color: $color-primary;
+
+		.postCard-tooltip {
+			opacity: 1;
+			transform: translate3d(0, 0, 0);
+		}
+		
+	}
+}
+
+.postCard-icon {
+	line-height: 1;
+}
+
+
+
+.postCard-moreInfoContainer {
+	position: relative;
+}
+
+.postCard-moreInfoButton {
+	align-items: center;
+	appearance: none;
+	background-color: $color-secondary;
+	border: none;
+	border-radius: 50%;
+	display: flex;
+	font-size: 1.6rem;
+	justify-content: center;
+	line-height: 1;
+	height: 1.6em;
+	width: 1.6em;
+}
+
+.postCard-moreInfo {
+	background-color: $darkest;
+	border-radius: 3px;
+	color: $lightest;
+	left: -1rem;
+	padding: .5em 1em;
+	position: absolute;
+	bottom: calc(100% + 1rem);
+
 	&::before {
-		content: '🖥️';
-		display: inline-block;
-		margin-right: 0.5em;
+		content: '';
+		display: block;
+		height: 1px;
+		width: 1px;
+		border-top: 10px solid $darkest;
+		border-left: 10px solid transparent;
+		border-right: 10px solid transparent;
+		position: absolute;
+		left: 1rem;
+		bottom: -10px;
 	}
 }

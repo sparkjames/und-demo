@@ -16,29 +16,53 @@ const PostCard = ( {post} ) => {
 
 	return (
 		<article className="postCard">
-			<header className="postCard-header">
+			{/* <header className="postCard-header">
 				<p className="postCard-date">{ `${humanReadableDate} at ${humanReadableTime}` }</p>
 				<p className="postCard-location">{ location }</p>
-			</header>
+			</header> */}
 
 			<p className="postCard-message">{ message }</p>
 
+			<div className="postCard-userInfo">
+				{ image &&
+				<figure className="postCard-figure">
+					<img className="postCard-image" src={ image } alt={ `Avatar for ${username}` } />
+				</figure>
+				}
+				<h4 className="postCard-author">{ author }</h4>
+				<p className="postCard-username">@{ username }</p>
+			</div>
+
 			<footer className="postCard-footer">
 
-				<div className="postCard-userInfo">
-					{ image &&
-					<figure className="postCard-figure">
-						<img className="postCard-image" src={ image } alt={ `Avatar for ${username}` } />
-					</figure>
-					}
-					<h4 className="postCard-author">{ author }</h4>
-					<p className="postCard-username">@{ username }</p>
+				<div className="postCard-moreInfo">
+					<p className="postCard-date">{ `${humanReadableDate} at ${humanReadableTime}` }</p>
+					<p className="postCard-location">{ location }</p>
 				</div>
 
 				<div className="postCard-engagement">
-					<div className="postCard-likes">{ `${likes} like${likes > 1 ? 's' : ''}` }</div>
-					<div className="postCard-reposts">{ `${reposts} repost${reposts > 1 ? 's' : ''}` }</div>
+
+					<button className="postCard-engagementButton postCard-engagementButton--likes" type="button">
+						<i className="postCard-icon">👍</i>
+						<div className="postCard-tooltip">{ `${likes} like${likes > 1 ? 's' : ''}` }</div>
+					</button>
+
+					<button className="postCard-engagementButton postCard-engagementButton--reposts" type="button">
+						<i className="postCard-icon">🖥️</i>
+						<div className="postCard-tooltip">{ `${reposts} repost${reposts > 1 ? 's' : ''}` }</div>
+					</button>
+
+					<button className="postCard-engagementButton postCard-engagementButton--location" type="button">
+						<i className="postCard-icon">📍</i>
+						<div className="postCard-tooltip">Posted from { location }</div>
+					</button>
+
 				</div>
+
+				{/* <div className="postCard-moreInfoContainer">
+					<button className="postCard-moreInfoButton" type="button">i</button>
+					
+				</div> */}
 
 			</footer>
       
