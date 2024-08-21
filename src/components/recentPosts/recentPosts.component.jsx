@@ -3,6 +3,7 @@ import './recentPosts.styles.scss';
 import { useEffect, useState } from 'react';
 
 import PostCard from '../postCard/postCard.component';
+import TagList from '../tagList/tagList.component';
 
 // https://blog.logrocket.com/create-responsive-masonry-layouts-react-app/
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
@@ -10,10 +11,33 @@ import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 // TODO
 // https://github.com/andreasbm/masonry-layout
 
+const addTag = ( tags = [], tagNameToAdd ) => {
+
+	// Check if the tagNameToAdd already exists in the array.
+	const existingTag = tags.find( (tag) => tag.name === tagNameToAdd );
+
+	// If the tag exists, increment the quantity...
+	if ( existingTag ) {
+		return tags.map( (tag) => 
+			tag.name === tagNameToAdd ? {...tag, quantity: tag.quantity + 1 } : tag
+		);
+	}
+	
+	// ... otherwise return an array with the added tag.
+	return [...tags, {
+		name: tagNameToAdd,
+		quantity: 1,
+	}]
+};
+
 const RecentPosts = () => {
 
 	const [posts, setPosts] = useState([]);
+	const [tags, setTags] = useState([]);
 
+	/**
+	 * Fetch the social media posts when the app starts.
+	 */
 	useEffect( () => {
 
 		/**
@@ -39,11 +63,39 @@ const RecentPosts = () => {
 		fetchPosts();
 	}, []);
 
+	/**
+	 * Scan for tags when the posts are updated.
+	 */
+	useEffect( () => {
+		if ( posts.length ){
+			let newTags = [];
+
+			const tagPattern = /#[\S][^,; ]+/g;
+
+			posts.forEach( (post) => {
+				const matches = post.message.matchAll( tagPattern );
+				// console.log( 'matches = ', matches );
+
+				for ( const match of matches ) {
+					// console.log(`Found ${match[0]}`,);
+					// console.log('match = ', match);
+					newTags = addTag( newTags, match[0] );
+				}
+			});
+
+			console.table(newTags);
+			setTags(newTags);
+
+		}
+	}, [posts]);
+
 	return (
 		<section className="recentPosts">
 			<div className="recentPosts-container container">
 
 				<h2 className="recentPosts-primaryHeading">Recent Posts</h2>
+
+				<TagList tags={tags}></TagList>
 
 				{ posts && 
 				<ResponsiveMasonry
