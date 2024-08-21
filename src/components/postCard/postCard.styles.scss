@@ -8,6 +8,17 @@
 .postCard {
 	background-color: $lightest;
 	box-shadow: 0 1px 15px 3px rgba(0,0,0, 0.12);
+	position: relative;
+
+	&:hover,
+	&:focus {
+		.postCard-footer {
+			max-height: 100px;
+			opacity: 1;
+			pointer-events: initial;
+			transform: translate3d(0,0,0);
+		}
+	}
 }
 
 .postCard-header {
@@ -25,7 +36,11 @@
 }
 
 .postCard-date {
+	@include postCard-padding();
+	font-size: 1.3rem;
 	// display: inline;
+	margin-bottom: 1em;
+	opacity: 0.7;
 }
 
 .postCard-location {
@@ -87,8 +102,18 @@
 	@include postCard-padding();
 	background-color: #ddd;
 	font-size: 1.4rem;
+	left: 0;
+	max-height: 0;
+	opacity: 0;
 	padding-bottom: 1.4rem;
 	padding-top: 1.4rem;
+	pointer-events: none;
+	// position: absolute;
+	top: 100%;
+	transform: translate3d(0, -1rem, 0);
+	transition: max-height 150ms ease-out, opacity 150ms ease-out, transform 150ms ease-out;
+	width: 100%;
+	z-index: 2;
 }
 
 .postCard-engagement {
@@ -173,27 +198,4 @@
 	line-height: 1;
 	height: 1.6em;
 	width: 1.6em;
-}
-
-.postCard-moreInfo {
-	background-color: $darkest;
-	border-radius: 3px;
-	color: $lightest;
-	left: -1rem;
-	padding: .5em 1em;
-	position: absolute;
-	bottom: calc(100% + 1rem);
-
-	&::before {
-		content: '';
-		display: block;
-		height: 1px;
-		width: 1px;
-		border-top: 10px solid $darkest;
-		border-left: 10px solid transparent;
-		border-right: 10px solid transparent;
-		position: absolute;
-		left: 1rem;
-		bottom: -10px;
-	}
 }

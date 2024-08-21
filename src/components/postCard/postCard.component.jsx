@@ -33,12 +33,9 @@ const PostCard = ( {post} ) => {
 				<p className="postCard-username">@{ username }</p>
 			</div>
 
-			<footer className="postCard-footer">
+			<p className="postCard-date">{ `${humanReadableDate} at ${humanReadableTime}` }</p>
 
-				<div className="postCard-moreInfo">
-					<p className="postCard-date">{ `${humanReadableDate} at ${humanReadableTime}` }</p>
-					<p className="postCard-location">{ location }</p>
-				</div>
+			<footer className="postCard-footer">
 
 				<div className="postCard-engagement">
 
