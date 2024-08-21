@@ -8,9 +8,6 @@ import TagList from '../tagList/tagList.component';
 // https://blog.logrocket.com/create-responsive-masonry-layouts-react-app/
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 
-// TODO
-// https://github.com/andreasbm/masonry-layout
-
 const addTag = ( tags = [], tagNameToAdd ) => {
 
 	// Check if the tagNameToAdd already exists in the array.
