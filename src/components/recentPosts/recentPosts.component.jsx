@@ -4,6 +4,7 @@ import { useEffect, useState, useContext } from 'react';
 
 import { TagFiltersContext } from '../../contexts/tagFilters.context';
 import PostCard from '../postCard/postCard.component';
+import TagSearch from '../tagSearch/tagSearch.component';
 import TagList from '../tagList/tagList.component';
 
 /**
@@ -54,6 +55,8 @@ const RecentPosts = () => {
 				<h2 className="recentPosts-primaryHeading">Recent Posts</h2>
 
 				<div className="recentPosts-body">
+
+					{/* <TagSearch></TagSearch> */}
 
 					<TagList posts={posts}></TagList>
 

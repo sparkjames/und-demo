@@ -1,5 +1,8 @@
 import './postCard.styles.scss';
 
+// TODO
+// Find bette icons for the engagement butons.
+
 const PostCard = ( {post} ) => {
 
 	// Pull all of the post properties.
