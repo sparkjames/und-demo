@@ -1,7 +1,7 @@
 import './header.styles.scss';
 import { ReactComponent as Logo } from '../../assets/images/logotype-full-compressed.svg';
 
-import HeaderNav from '../../content/header-nav.json';
+import MainNav from '../../content/main-nav.json';
 
 import { useEffect, useRef, useState } from 'react';
 
@@ -59,12 +59,12 @@ const Header = () => {
 			<div className="siteHeader-container container">
 
 				<a href="/" className="siteHeader-logoLink" title="University of North Dakota Homepage">
-					<Logo></Logo>
+					<Logo className="siteHeader-logo"></Logo>
 				</a>
 
-				{ HeaderNav.links.length > 0 && 
+				{ MainNav.links.length > 0 && 
 				<nav className="siteHeader-nav">
-					{ HeaderNav.links.map( (navLink, i) => {
+					{ MainNav.links.map( (navLink, i) => {
 						return (
 						<a key={i} href={navLink.url} className="siteHeader-navLink">{navLink.title}</a>
 						)
