@@ -61,3 +61,15 @@
 		color: $color-primary;
 	}
 }
+
+
+
+.recentPosts-noResults {
+	background: #eee;
+	background: linear-gradient(to bottom, rgba(238,238,238,1) 0%, rgba(255,255,255,0) 20%);
+	padding: 2em;
+	width: 100%;
+}
+.recentPosts-noResultsMessage {
+	font-size: 3rem;
+}

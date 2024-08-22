@@ -18,6 +18,7 @@ import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 const RecentPosts = () => {
 
 	const [posts, setPosts] = useState([]);
+	const [filteredPosts, setFilteredPosts] = useState([]);
 
 	// Get the array of selected tags to filter the grid of posts.
 	const { selectedTags } = useContext( TagFiltersContext );
@@ -53,6 +54,38 @@ const RecentPosts = () => {
 		fetchPosts();
 	}, []);
 
+	/**
+	 * Keep an array of posts filtered by the search field and tags.
+	 */
+	useEffect( () => {
+
+		const newFilteredPosts = posts
+			.filter( (post) => {
+				let useThisPost = true;
+				if ( selectedTags.length > 0 ) {
+					useThisPost = false;
+					selectedTags.forEach( (selectedTag) => {
+						if ( post.message.includes(selectedTag) ) {
+							useThisPost = true;
+						}
+					});
+				}
+				return useThisPost;
+			})
+			.filter( (post) => {
+				if ( postSearchFilter ) {
+					if ( post.message.includes(postSearchFilter) ) {
+						return true;
+					}
+					return false;
+				}
+				return true;
+			});
+
+			setFilteredPosts( newFilteredPosts );
+
+	}, [posts, postSearchFilter, selectedTags]);
+
 	return (
 		<section className="recentPosts">
 			<div className="recentPosts-container container">
@@ -67,33 +100,11 @@ const RecentPosts = () => {
 						<TagList posts={posts}></TagList>
 					</aside>
 
-					{ posts && 
+					{ filteredPosts.length > 0 && 
 					<ResponsiveMasonry
 					columnsCountBreakPoints={{ 720: 2, 1020: 3, 1260: 4 }} className="recentPosts-gridContainer">
 						<Masonry columnsCount={4} gutter="40px" className="recentPosts-grid">
-							{ posts && posts
-								.filter( (post) => {
-									let useThisPost = true;
-									if ( selectedTags.length > 0 ) {
-										useThisPost = false;
-										selectedTags.forEach( (selectedTag) => {
-											if ( post.message.includes(selectedTag) ) {
-												useThisPost = true;
-											}
-										});
-									}
-									return useThisPost;
-								})
-								.filter( (post) => {
-									if ( postSearchFilter ) {
-										if ( post.message.includes(postSearchFilter) ) {
-											return true;
-										}
-										return false;
-									}
-									return true;
-								})
-								.map( (thisPost) => {
+							{ filteredPosts.map( (thisPost) => {
 								return (
 										<PostCard key={thisPost.id} post={thisPost}></PostCard>
 									);
@@ -103,6 +114,11 @@ const RecentPosts = () => {
 					</ResponsiveMasonry>
 					}
 					{/* TODO: State for zero results. */}
+					{ ! filteredPosts.length && 
+					<div className="recentPosts-noResults">
+						<p className="recentPosts-noResultsMessage">No results.</p>
+					</div>
+					}
 
 				</div>
 
