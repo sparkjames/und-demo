@@ -1,7 +1,8 @@
 import './postCard.styles.scss';
 
-// TODO
-// Find bette icons for the engagement butons.
+import ThumbUpIcon from '@mui/icons-material/ThumbUp';
+import ReplayIcon from '@mui/icons-material/Replay';
+import LocationOnIcon from '@mui/icons-material/LocationOn';
 
 const PostCard = ( {post} ) => {
 
@@ -39,17 +40,17 @@ const PostCard = ( {post} ) => {
 				<div className="postCard-engagement">
 
 					<button className="postCard-engagementButton postCard-engagementButton--likes" type="button">
-						<i className="postCard-icon">👍</i>
+						<i className="postCard-icon"><ThumbUpIcon></ThumbUpIcon></i>
 						<div className="postCard-tooltip">{ `${likes} like${likes > 1 ? 's' : ''}` }</div>
 					</button>
 
 					<button className="postCard-engagementButton postCard-engagementButton--reposts" type="button">
-						<i className="postCard-icon">🖥️</i>
+						<i className="postCard-icon"><ReplayIcon></ReplayIcon></i>
 						<div className="postCard-tooltip">{ `${reposts} repost${reposts > 1 ? 's' : ''}` }</div>
 					</button>
 
 					<button className="postCard-engagementButton postCard-engagementButton--location" type="button">
-						<i className="postCard-icon">📍</i>
+						<i className="postCard-icon"><LocationOnIcon></LocationOnIcon></i>
 						<div className="postCard-tooltip">Posted from { location }</div>
 					</button>
 

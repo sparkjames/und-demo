@@ -23,8 +23,6 @@
 
 .postCard-header {
 	background-color: $color-secondary;
-	// color: $color-secondary;
-	// font-family: $serif;
 	font-size: 1.4rem;
 	display: flex;
 	gap: 1rem;
@@ -38,17 +36,8 @@
 .postCard-date {
 	@include postCard-padding();
 	font-size: 1.3rem;
-	// display: inline;
 	margin-bottom: 1em;
 	opacity: 0.7;
-}
-
-.postCard-location {
-	// display: inline;
-	// display: contents;
-	// &::before {
-	// 	content: '📍';
-	// }
 }
 
 .postCard-message {
@@ -63,7 +52,7 @@
 	display: grid;
 	column-gap: 1.2rem;
 	row-gap: 0.25rem;
-	grid-template-columns: clamp(40px, 20%, 80px) 1fr;
+	grid-template-columns: clamp(25px, 18%, 50px) 1fr;
 	margin-bottom: 2rem;
 	width: fit-content;
 }
@@ -91,11 +80,6 @@
 	grid-row: 2 / 3;
 }
 
-// .postCard-location {
-// 	grid-column: 2 / 3;
-// 	grid-row: 3 / 4;
-// }
-
 
 
 .postCard-footer {
@@ -108,7 +92,6 @@
 	padding-bottom: 1.4rem;
 	padding-top: 1.4rem;
 	pointer-events: none;
-	// position: absolute;
 	top: 100%;
 	transform: translate3d(0, -1rem, 0);
 	transition: max-height 150ms ease-out, opacity 150ms ease-out, transform 150ms ease-out;
@@ -119,6 +102,7 @@
 .postCard-engagement {
 	display: flex;
 	gap: 2rem;
+	justify-content: center;
 }
 
 .postCard-tooltip {
