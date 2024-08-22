@@ -1,0 +1,21 @@
+@import '../../assets/styles/config';
+
+.postSearch {
+	margin-bottom: 3rem;
+}
+
+.postSearch-input {
+	appearance: none;
+	background-color: #eee;
+	border-radius: 3px;
+	border: 2px solid transparent;
+	display: block;
+	font-size: 1.8rem;
+	padding: .25em;
+	transition: border-color 150ms;
+	width: calc(100% - 2rem);
+
+	&:focus {
+		border-color: $color-primary
+	}
+}

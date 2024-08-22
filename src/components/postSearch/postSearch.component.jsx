@@ -8,7 +8,7 @@ const PostSearch = () => {
 
 	return (
 		<div className="postSearch">
-			<input onChange={searchInputOnChange} className="postSearch-input" type="search" placeholder="Type to search posts&hellip;" />
+			<input onChange={searchInputOnChange} className="postSearch-input" type="search" placeholder="Search for posts&hellip;" />
 		</div>
 	);
 
