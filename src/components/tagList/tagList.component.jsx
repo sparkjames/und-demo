@@ -31,6 +31,18 @@ const addTag = ( tags = [], tagNameToAdd ) => {
 const TagList = ( {posts} ) => {
 
 	const [tags, setTags] = useState([]);
+	const [showAllTags, setShowAllTags] = useState(10);
+
+	/**
+	 * Toggle whether or not all the tags are showing, or just the top 10.
+	 */
+	const onClickToggleShowAll = (e) => {
+		if ( showAllTags ) {
+			setShowAllTags(undefined);
+		} else {
+			setShowAllTags(10);
+		}
+	};
 
 	/**
 	 * Scan for tags when the posts are updated.
@@ -56,14 +68,24 @@ const TagList = ( {posts} ) => {
 		}
 	}, [posts]);
 
+	console.log('showAllTags = ', showAllTags);
+	console.log(tags.slice(showAllTags));
+
 	return (
 		<div className="recentPosts-tags">
 			{
 				// Output the tags ordered by quantity.
-				tags.length && tags.sort( (a, b) => b.quantity - a.quantity ).map( (tag, i) =>
+				tags.length && tags
+				.sort( (a, b) => b.quantity - a.quantity )
+				.slice(0, showAllTags)
+				.map( (tag, i) =>
 				<Tag key={i} tag={tag}></Tag>
 				)
 			}
+
+			<button className="recentPosts-toggleShowAll" type="button" onClick={onClickToggleShowAll}>
+				{ showAllTags ? 'Show all' : 'Show fewer' }
+			</button>
 		</div>
 	);
 
