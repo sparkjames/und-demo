@@ -39,7 +39,7 @@ const TagList = ( {posts} ) => {
 		if ( posts.length ){
 			let newTags = [];
 
-			const tagPattern = /#[\S][^,; ]+/g;
+			const tagPattern = /#[\S][^,;!.? ]+/g;
 
 			posts.forEach( (post) => {
 				const matches = post.message.matchAll( tagPattern );
