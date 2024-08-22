@@ -3,6 +3,8 @@ import './recentPosts.styles.scss';
 import { useEffect, useState, useContext } from 'react';
 
 import { TagFiltersContext } from '../../contexts/tagFilters.context';
+import { PostSearchFilterContext } from '../../contexts/postSearchFilter.context';
+
 import PostCard from '../postCard/postCard.component';
 import PostSearch from '../postSearch/postSearch.component';
 import TagList from '../tagList/tagList.component';
@@ -19,6 +21,9 @@ const RecentPosts = () => {
 
 	// Get the array of selected tags to filter the grid of posts.
 	const { selectedTags } = useContext( TagFiltersContext );
+
+	// Get the value of the search filter.
+	const { postSearchFilter } = useContext( PostSearchFilterContext );
 
 	/**
 	 * Fetch the social media posts when the app starts.
@@ -66,26 +71,38 @@ const RecentPosts = () => {
 					<ResponsiveMasonry
 					columnsCountBreakPoints={{ 720: 2, 1020: 3, 1260: 4 }} className="recentPosts-gridContainer">
 						<Masonry columnsCount={4} gutter="40px" className="recentPosts-grid">
-							{/* TODO Filter this output via selectedTags */}
-							{ posts && posts.filter( (post) => {
-								let useThisPost = true;
-								if ( selectedTags.length > 0 ) {
-									useThisPost = false;
-									selectedTags.forEach( (selectedTag) => {
-										if ( post.message.includes(selectedTag) ) {
-											useThisPost = true;
+							{ posts && posts
+								.filter( (post) => {
+									let useThisPost = true;
+									if ( selectedTags.length > 0 ) {
+										useThisPost = false;
+										selectedTags.forEach( (selectedTag) => {
+											if ( post.message.includes(selectedTag) ) {
+												useThisPost = true;
+											}
+										});
+									}
+									return useThisPost;
+								})
+								.filter( (post) => {
+									if ( postSearchFilter ) {
+										if ( post.message.includes(postSearchFilter) ) {
+											return true;
 										}
-									});
-								}
-								return useThisPost;
-							}).map( (thisPost) => {
-							return (
-								<PostCard key={thisPost.id} post={thisPost}></PostCard>
-							);
-						})}
+										return false;
+									}
+									return true;
+								})
+								.map( (thisPost) => {
+								return (
+										<PostCard key={thisPost.id} post={thisPost}></PostCard>
+									);
+								})
+							}
 						</Masonry>
 					</ResponsiveMasonry>
 					}
+					{/* TODO: State for zero results. */}
 
 				</div>
 
