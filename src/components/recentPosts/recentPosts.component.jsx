@@ -113,7 +113,7 @@ const RecentPosts = () => {
 						</Masonry>
 					</ResponsiveMasonry>
 					}
-					{/* TODO: State for zero results. */}
+					
 					{ ! filteredPosts.length && 
 					<div className="recentPosts-noResults">
 						<p className="recentPosts-noResultsMessage">No results.</p>
