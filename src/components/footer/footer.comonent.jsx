@@ -34,6 +34,7 @@ const Footer = () => {
 					<p className="siteFooter-copyright">&copy; 2024 University of North Dakota - Grand Forks, ND - Member of ND University System</p>
 
 				</div>
+				{/* TODO add bg imafe on left side, uses slashes graphic? */}
       
 			</div>
     </section>
