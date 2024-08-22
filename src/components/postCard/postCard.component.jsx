@@ -16,10 +16,6 @@ const PostCard = ( {post} ) => {
 
 	return (
 		<article className="postCard">
-			{/* <header className="postCard-header">
-				<p className="postCard-date">{ `${humanReadableDate} at ${humanReadableTime}` }</p>
-				<p className="postCard-location">{ location }</p>
-			</header> */}
 
 			<p className="postCard-message">{ message }</p>
 
@@ -55,11 +51,6 @@ const PostCard = ( {post} ) => {
 					</button>
 
 				</div>
-
-				{/* <div className="postCard-moreInfoContainer">
-					<button className="postCard-moreInfoButton" type="button">i</button>
-					
-				</div> */}
 
 			</footer>
       

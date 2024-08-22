@@ -7,8 +7,8 @@ const TagList = ( {tags} ) => {
 	return (
 		<div className="recentPosts-tags">
 			{
-				tags.length && tags.map( (tag) =>
-				<Tag tag={tag}></Tag>
+				tags.length && tags.map( (tag, i) =>
+				<Tag key={i} tag={tag}></Tag>
 				)
 			}
 		</div>

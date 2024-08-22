@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useState } from "react";
 
 const addSelectedTag = ( tags = [], tagNameToAdd ) => {
 
@@ -19,8 +19,6 @@ const removeSelectedTag = ( tags = [], tagNameToRemove ) => {
 };
 
 export const TagFiltersContext = createContext({
-	filtersAreActive: false,
-	setFiltersAreActive: () => {},
 	selectedTags: [],
 	setSelectedTags: () => {},
 	onTagSelected: () => {}, 
@@ -29,29 +27,19 @@ export const TagFiltersContext = createContext({
 
 export const TagFiltersProvider = ({children}) => {
 
-	const [filtersAreActive, setFiltersAreActive] = useState(false);
 	const [selectedTags, setSelectedTags] = useState([]);
 
-	useEffect( () => {
-		if ( selectedTags.length > 0 ) {
-			setFiltersAreActive(true);
-		} else {
-			setFiltersAreActive(false);
-		}
-		console.log('selectedTags = ', selectedTags);
-	}, [selectedTags]);
-
 	const onTagSelected = ( tagToSelect ) => {
-		console.log('tag selected');
+		// console.log('tag selected');
 		setSelectedTags( addSelectedTag(selectedTags, tagToSelect) );
 	};
 
 	const onTagDeselected = ( tagToRemove ) => {
-		console.log('tag deselected');
+		// console.log('tag deselected');
 		setSelectedTags( removeSelectedTag(selectedTags, tagToRemove) );
 	};
 
-	const value = { filtersAreActive, setFiltersAreActive, selectedTags, setSelectedTags, onTagSelected, onTagDeselected };
+	const value = { selectedTags, setSelectedTags, onTagSelected, onTagDeselected };
 
 	return (
 		<TagFiltersContext.Provider value={value}>{children}</TagFiltersContext.Provider>
