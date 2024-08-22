@@ -1,0 +1,37 @@
+@import '../../assets/styles/config';
+
+.tag-label {
+	align-items: center;
+	border: 1px solid #c9c9c9;
+	border-radius: 4px;
+	cursor: pointer;
+	display: flex;
+	gap: .33em;
+	padding: .25em .5em;
+	transition: background-color 150ms ease-out, border-color 150ms ease-out, color 150ms ease-out;
+
+	&:has(.tag-checkbox:checked) {
+		background-color: $color-primary;
+		border-color: $color-primary;
+		color: $lightest;
+	}
+}
+
+.tag-checkbox {
+	display: contents;
+	visibility: hidden;
+}
+
+.tag-quantity {
+	font-size: .75em;
+	line-height: 1;
+
+	&::before {
+		content: "(";
+	}
+
+	&::after {
+		content: ")";
+	}
+
+}

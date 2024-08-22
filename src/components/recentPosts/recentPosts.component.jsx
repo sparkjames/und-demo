@@ -47,63 +47,42 @@ const RecentPosts = () => {
 		fetchPosts();
 	}, []);
 
-	/**
-	 * Scan for tags when the posts are updated.
-	 */
-	// useEffect( () => {
-	// 	if ( posts.length ){
-	// 		let newTags = [];
-
-	// 		const tagPattern = /#[\S][^,; ]+/g;
-
-	// 		posts.forEach( (post) => {
-	// 			const matches = post.message.matchAll( tagPattern );
-	// 			// console.log( 'matches = ', matches );
-
-	// 			for ( const match of matches ) {
-	// 				newTags = addTag( newTags, match[0] );
-	// 			}
-	// 		});
-
-	// 		// console.table(newTags);
-	// 		setTags(newTags);
-
-	// 	}
-	// }, [posts]);
-
 	return (
 		<section className="recentPosts">
 			<div className="recentPosts-container container">
 
 				<h2 className="recentPosts-primaryHeading">Recent Posts</h2>
 
-				<TagList posts={posts}></TagList>
+				<div className="recentPosts-body">
 
-				{ posts && 
-				<ResponsiveMasonry
-        columnsCountBreakPoints={{ 500: 2, 850: 3, 1250: 4 }}
-      	>
-					<Masonry columnsCount={4} gutter="40px" className="recentPosts-grid">
-						{/* TODO Filter this output via selectedTags */}
-						{ posts && posts.filter( (post) => {
-							let useThisPost = true;
-							if ( selectedTags.length > 0 ) {
-								useThisPost = false;
-								selectedTags.forEach( (selectedTag) => {
-									if ( post.message.includes(selectedTag) ) {
-										useThisPost = true;
-									}
-								});
-							}
-							return useThisPost;
-						}).map( (thisPost) => {
-						return (
-							<PostCard key={thisPost.id} post={thisPost}></PostCard>
-						);
-					})}
-					</Masonry>
-				</ResponsiveMasonry>
-				}
+					<TagList posts={posts}></TagList>
+
+					{ posts && 
+					<ResponsiveMasonry
+					columnsCountBreakPoints={{ 500: 2, 850: 3, 1250: 4 }}>
+						<Masonry columnsCount={4} gutter="40px" className="recentPosts-grid">
+							{/* TODO Filter this output via selectedTags */}
+							{ posts && posts.filter( (post) => {
+								let useThisPost = true;
+								if ( selectedTags.length > 0 ) {
+									useThisPost = false;
+									selectedTags.forEach( (selectedTag) => {
+										if ( post.message.includes(selectedTag) ) {
+											useThisPost = true;
+										}
+									});
+								}
+								return useThisPost;
+							}).map( (thisPost) => {
+							return (
+								<PostCard key={thisPost.id} post={thisPost}></PostCard>
+							);
+						})}
+						</Masonry>
+					</ResponsiveMasonry>
+					}
+
+				</div>
 
 			</div>
     </section>

@@ -17,7 +17,7 @@ const Tag = ( { tag } ) => {
 
 	return (
 		<div className="tag">
-			<label>
+			<label className="tag-label">
 				<input type="checkbox" className="tag-checkbox" value={tag.name} onChange={handleTagChange} />
 				<span className="tag-name">{tag.name}</span> <span className="tag-quantity">{tag.quantity}</span>
 			</label>
