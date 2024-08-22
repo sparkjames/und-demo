@@ -4,7 +4,7 @@ import { useEffect, useState, useContext } from 'react';
 
 import { TagFiltersContext } from '../../contexts/tagFilters.context';
 import PostCard from '../postCard/postCard.component';
-import TagSearch from '../tagSearch/tagSearch.component';
+import PostSearch from '../postSearch/postSearch.component';
 import TagList from '../tagList/tagList.component';
 
 /**
@@ -56,13 +56,15 @@ const RecentPosts = () => {
 
 				<div className="recentPosts-body">
 
-					{/* <TagSearch></TagSearch> */}
+					<aside className="recentPosts-sidebar">
+						<PostSearch></PostSearch>
 
-					<TagList posts={posts}></TagList>
+						<TagList posts={posts}></TagList>
+					</aside>
 
 					{ posts && 
 					<ResponsiveMasonry
-					columnsCountBreakPoints={{ 720: 2, 1020: 3, 1260: 4 }} className="recentPosts-responsiveContainer">
+					columnsCountBreakPoints={{ 720: 2, 1020: 3, 1260: 4 }} className="recentPosts-gridContainer">
 						<Masonry columnsCount={4} gutter="40px" className="recentPosts-grid">
 							{/* TODO Filter this output via selectedTags */}
 							{ posts && posts.filter( (post) => {

@@ -20,7 +20,15 @@
 	}
 }
 
-.recentPosts-responsiveContainer {
+.recentPosts-sidebar {
+	flex-basis: 20%;
+
+	@media screen and (max-width: $breakpoint-recentPosts-single-column ) {
+    flex-basis: 100%;
+	}
+}
+
+.recentPosts-gridContainer {
 	flex-basis: 80%;
 
 	@media screen and (max-width: $breakpoint-recentPosts-single-column ) {
@@ -30,14 +38,9 @@
 }
 
 .recentPosts-tags {
-	flex-basis: 20%;
 	font-size: 1.2rem;
 	margin-bottom: 3rem;
 	margin-left: -0.5em;
-
-	@media screen and (max-width: $breakpoint-recentPosts-single-column ) {
-    flex-basis: 100%;
-	}
 }
 
 .recentPosts-toggleShowAll {
