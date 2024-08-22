@@ -1,8 +1,20 @@
+import { useContext, useRef } from 'react';
 import './postSearch.styles.scss';
+
+import { PostSearchFilterContext } from '../../contexts/postSearchFilter.context';
 
 const PostSearch = () => {
 
-	const searchInputOnChange = (e) => {
+	const searchUpdateTimeoutRef = useRef( null );
+
+	const { setPostSearchFilter } = useContext( PostSearchFilterContext );
+
+	const searchInputOnChange = ( e ) => {
+
+		clearTimeout(searchUpdateTimeoutRef.current);
+		searchUpdateTimeoutRef.current = setTimeout( () => {
+			setPostSearchFilter( e.target.value );
+		}, 300 );
 
 	};
 

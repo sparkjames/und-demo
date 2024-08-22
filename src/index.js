@@ -4,14 +4,17 @@ import './index.scss';
 import App from './App';
 // import reportWebVitals from './reportWebVitals';
 
+import { PostSearchFilterProvider } from './contexts/postSearchFilter.context';
 import { TagFiltersProvider } from './contexts/tagFilters.context';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <TagFiltersProvider>
-      <App />
-    </TagFiltersProvider>
+    <PostSearchFilterProvider>
+      <TagFiltersProvider>
+        <App />
+      </TagFiltersProvider>
+    </PostSearchFilterProvider>
   </React.StrictMode>
 );
 
