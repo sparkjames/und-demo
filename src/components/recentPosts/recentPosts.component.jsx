@@ -12,31 +12,11 @@ import TagList from '../tagList/tagList.component';
  */
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 
-const addTag = ( tags = [], tagNameToAdd ) => {
-
-	// Check if the tagNameToAdd already exists in the array.
-	const existingTag = tags.find( (tag) => tag.name === tagNameToAdd );
-
-	// If the tag exists, increment the quantity...
-	if ( existingTag ) {
-		return tags.map( (tag) => 
-			tag.name === tagNameToAdd ? {...tag, quantity: tag.quantity + 1 } : tag
-		);
-	}
-	
-	// ... otherwise return an array with the added tag.
-	return [...tags, {
-		name: tagNameToAdd,
-		quantity: 1,
-	}]
-};
-
 const RecentPosts = () => {
 
 	const [posts, setPosts] = useState([]);
-	const [tags, setTags] = useState([]);
 
-	// 
+	// Get the array of selected tags to filter the grid of posts.
 	const { selectedTags } = useContext( TagFiltersContext );
 
 	/**
@@ -70,28 +50,26 @@ const RecentPosts = () => {
 	/**
 	 * Scan for tags when the posts are updated.
 	 */
-	useEffect( () => {
-		if ( posts.length ){
-			let newTags = [];
+	// useEffect( () => {
+	// 	if ( posts.length ){
+	// 		let newTags = [];
 
-			const tagPattern = /#[\S][^,; ]+/g;
+	// 		const tagPattern = /#[\S][^,; ]+/g;
 
-			posts.forEach( (post) => {
-				const matches = post.message.matchAll( tagPattern );
-				// console.log( 'matches = ', matches );
+	// 		posts.forEach( (post) => {
+	// 			const matches = post.message.matchAll( tagPattern );
+	// 			// console.log( 'matches = ', matches );
 
-				for ( const match of matches ) {
-					// console.log(`Found ${match[0]}`,);
-					// console.log('match = ', match);
-					newTags = addTag( newTags, match[0] );
-				}
-			});
+	// 			for ( const match of matches ) {
+	// 				newTags = addTag( newTags, match[0] );
+	// 			}
+	// 		});
 
-			console.table(newTags);
-			setTags(newTags);
+	// 		// console.table(newTags);
+	// 		setTags(newTags);
 
-		}
-	}, [posts]);
+	// 	}
+	// }, [posts]);
 
 	return (
 		<section className="recentPosts">
@@ -99,7 +77,7 @@ const RecentPosts = () => {
 
 				<h2 className="recentPosts-primaryHeading">Recent Posts</h2>
 
-				<TagList tags={tags}></TagList>
+				<TagList posts={posts}></TagList>
 
 				{ posts && 
 				<ResponsiveMasonry
