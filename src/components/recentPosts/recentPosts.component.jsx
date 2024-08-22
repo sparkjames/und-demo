@@ -59,7 +59,7 @@ const RecentPosts = () => {
 
 					{ posts && 
 					<ResponsiveMasonry
-					columnsCountBreakPoints={{ 500: 2, 850: 3, 1250: 4 }}>
+					columnsCountBreakPoints={{ 720: 2, 1020: 3, 1260: 4 }} className="recentPosts-responsiveContainer">
 						<Masonry columnsCount={4} gutter="40px" className="recentPosts-grid">
 							{/* TODO Filter this output via selectedTags */}
 							{ posts && posts.filter( (post) => {

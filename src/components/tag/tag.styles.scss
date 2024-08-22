@@ -1,5 +1,12 @@
 @import '../../assets/styles/config';
 
+.tag {
+	height: min-content;
+	display: inline-block;
+	margin-left: 0.5em;
+	margin-bottom: 0.5em;
+}
+
 .tag-label {
 	align-items: center;
 	border: 1px solid #c9c9c9;
