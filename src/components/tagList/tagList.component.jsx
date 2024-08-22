@@ -59,7 +59,8 @@ const TagList = ( {posts} ) => {
 	return (
 		<div className="recentPosts-tags">
 			{
-				tags.length && tags.map( (tag, i) =>
+				// Output the tags ordered by quantity.
+				tags.length && tags.sort( (a, b) => b.quantity - a.quantity ).map( (tag, i) =>
 				<Tag key={i} tag={tag}></Tag>
 				)
 			}
