@@ -15,67 +15,34 @@ gsap.registerPlugin(useGSAP,ScrollTrigger);
 
 const Hero = () => {
 
-	const heroMessageContainer = useRef();
-	const heroMessages = useRef([]);
+	const heroSlides = useRef();
 
 	useGSAP( () => {
-		console.log('START GSAP');
-		console.log('heroMessageContainer = ', heroMessageContainer.current);
-		console.log('heroMessages = ', heroMessages.current);
+		// console.log('START GSAP');
+		// console.log('heroMessages = ', heroSlides.current);
 
-		// let sections = gsap.utils.toArray(".panel");
+		// let sections = gsap.utils.toArray( heroSlides.current.querySelectorAll('.hero-message'));
 
-		// gsap.to('.hero-message:not(.hero-message-0)', {
-		// 	xPercent: -100 * (HeroContent.content.length - 1),
-		// 	ease: "none",
-		// 	scrollTrigger: {
-		// 		trigger: ".hero-message-1",
-		// 		pin: true,
-		// 		scrub: 1,
-		// 		// snap: 1 / (HeroContent.content.length - 1),
-		// 		end: () => "+=" + heroMessageContainer.current.offsetWidth
-		// 	}
-		// });
-
-	}, { scope: heroMessageContainer });
+	}, { scope: heroSlides });
 
 	return (
-		<section className="hero" ref={heroMessageContainer}>
+		<section className="hero">
 
-			<h1 className="hero-primaryHeading container">
-				{HeroContent.primaryHeading}
-			</h1>
+			<div className="hero-intro">
+				<h1 className="hero-primaryHeading container">
+					{HeroContent.primaryHeading}
+				</h1>
+			</div>
 
-			{ HeroContent.content.map( (heroMessage, i) => {
-				// const { heading, subheading, description, contentImage, backgroundImage, backgroundColor, textColor } = heroMessage;
-				return (
-					<HeroMessage key={i} message={heroMessage}></HeroMessage>
-					// <div key={i} className={`hero-message hero-message-${i} hero-message--${textColor}`} style={{backgroundColor: backgroundColor}}>
-					// 	<div className="hero-messageContainer container">
-
-					// 		{ backgroundImage &&
-					// 		<div className="hero-backgroundImageContainer">
-					// 			<img className="hero-backgroundImage" src={ backgroundImage } width="1280" height="720" alt="TODO temporary placeholder" />
-					// 		</div>
-					// 		}
-
-					// 		<div className="hero-contentContainer">
-
-					// 			{ contentImage &&
-					// 			<img className="hero-contentImage" src={ contentImage } width="268" height="400" alt="TODO temporary placeholder" />
-					// 			}
-
-					// 			<h2 className="hero-heading">{heading}</h2>
-					// 			{ subheading && 
-					// 			<p className="hero-subheading">{subheading}</p>
-					// 			}
-					// 			<p className="hero-description">{description}</p>
-					// 		</div>
-
-					// 	</div>
-					// </div>
-				);
+			{ HeroContent.content.length > 0 && 
+			<div className="hero-slides" ref={heroSlides}>
+				{ HeroContent.content.map( (heroMessage, i) => {
+					return (
+						<HeroMessage key={i} message={heroMessage}></HeroMessage>
+					);
 			}) }
+			</div>
+			}
 
 			<div className="hero-cta">
 				<a href={HeroContent.cta.url} className="hero-ctaLink">{HeroContent.cta.title}</a>

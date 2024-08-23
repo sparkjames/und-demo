@@ -1,0 +1,113 @@
+@import '../../assets/styles/config';
+
+.hero-message {
+	// align-items: flex-end;
+	display: flex;
+	height: 100vh;
+	min-height: 820px;
+	position: relative;
+	// position: absolute;
+	// left: 0;
+	// top: 0;
+	// width: 100%;
+	transition: transform 500ms ease-out;
+}
+
+// .hero-message-0 {
+// 	transform: translate3d(-75%, 0, 0);
+// }
+
+// .hero-message-1 {
+// 	transform: translate3d(-101%, 0, 0);
+// }
+
+// .hero-message-2 {
+// 	transform: translate3d(-101%, 0, 0);
+// }
+
+// .hero-message-3 {
+// 	transform: translate3d(-101%, 0, 0);
+// }
+
+.hero-message--light {
+	color: $lightest;
+}
+
+.hero-messageContainer {
+	align-items: stretch;
+	display: flex;
+	flex-direction: row-reverse;
+	gap: 3.6rem;
+	justify-content: space-between;
+	padding-bottom: 5rem;
+	padding-top: var(--header-height, 85px);
+	position: relative;
+	width: 100%;
+
+	&::before {
+		content: '';
+		background-image: url('../../assets/images/large-arrow.svg');
+		background-repeat: no-repeat;
+		background-size: cover;
+		background-position: right center;
+		display: block;
+		height: 100%;
+		width: 100%;
+		position: absolute;
+		right: 0;
+		bottom: 0;
+	}
+}
+
+.hero-backgroundImageContainer {
+	max-width: 50%;
+	padding-top: 15rem;
+	position: relative;
+	width: 100%;
+}
+
+.hero-backgroundImage {
+	display: block;
+	height: 100%;
+	object-fit: cover;
+	object-position: center top;
+	width: 100%;
+	// height: 100%;
+	// left: 0;
+	// object-fit: cover;
+	// object-position: center;
+	// position: absolute;
+	// top: 0;
+	// width: 100%;
+}
+
+.hero-contentContainer {
+	display: flex;
+	// align-items: flex-end;
+	flex-direction: column;
+	height: 100%;
+	justify-content: flex-end;
+	// max-width: 480px;
+	padding-top: 15rem;
+	position: relative;
+	width: 50%;
+}
+
+.hero-contentImage {
+	// float: right;
+}
+
+.hero-heading {
+	margin-bottom: 0;
+	text-transform: uppercase;
+}
+
+.hero-subheading {
+	font-family: $serif-bold;
+	font-size: 2.2rem;
+	font-weight: bold;
+}
+
+.hero-description {
+	font-size: 1.8rem;
+}
