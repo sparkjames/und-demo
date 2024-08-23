@@ -21,7 +21,21 @@ const Hero = () => {
 		// console.log('START GSAP');
 		// console.log('heroMessages = ', heroSlides.current);
 
-		// let sections = gsap.utils.toArray( heroSlides.current.querySelectorAll('.hero-message'));
+		let sections = gsap.utils.toArray(".hero-message");
+
+		gsap.to(sections, {
+			xPercent: -100 * (sections.length - 1),
+			ease: "none",
+			scrollTrigger: {
+				trigger: heroSlides.current,
+				pin: true,
+				scrub: 1,
+				// snap: 1 / (sections.length - 1),
+				end: () => "+=" + heroSlides.current.offsetWidth
+			}
+		});
+
+
 
 	}, { scope: heroSlides });
 
@@ -35,7 +49,8 @@ const Hero = () => {
 			</div>
 
 			{ HeroContent.content.length > 0 && 
-			<div className="hero-slides" ref={heroSlides}>
+			<div className="hero-slides" ref={heroSlides} style={ { width: `calc(100% * ${HeroContent.content.length})` } }>
+				<h1>TEST</h1>
 				{ HeroContent.content.map( (heroMessage, i) => {
 					return (
 						<HeroMessage key={i} message={heroMessage}></HeroMessage>
