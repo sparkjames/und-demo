@@ -68,8 +68,8 @@ const TagList = ( {posts} ) => {
 		}
 	}, [posts]);
 
-	console.log('showAllTags = ', showAllTags);
-	console.log(tags.slice(showAllTags));
+	// console.log('showAllTags = ', showAllTags);
+	// console.log(tags.slice(showAllTags));
 
 	return (
 		<div className="recentPosts-tags">
