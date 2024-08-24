@@ -3,9 +3,13 @@ import './heroMessage.styles.scss';
 const HeroMessage = ( {message} ) => {
 	const { heading, subheading, description, contentImage, backgroundImage, backgroundColor, textColor } = message;
 	
+	// TODO: The image around here called "backgroundImage" turned into a "slideImage", change the name when possible.
+
 	return (
 		<div className={`hero-message hero-message--${textColor}`} style={{backgroundColor: backgroundColor}}>
 			<div className="hero-messageContainer container">
+
+				<div className="hero-messageArrow"></div>
 
 				{ backgroundImage &&
 				<div className="hero-backgroundImageContainer">
