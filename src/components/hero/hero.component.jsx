@@ -2,7 +2,7 @@ import './hero.styles.scss';
 
 import HeroContent from '../../content/hero.json';
 
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
 
 import YouTube from 'react-youtube';
 
@@ -30,9 +30,20 @@ const youtubeOptions = {
 };
 const youtubeID = 'AaBW0bOkOv4';
 
+let heroLetterDelay = 0;
+
 const Hero = () => {
 
+	const heroRef = useRef();
 	const heroSlides = useRef();
+
+	useEffect( () => {
+
+		const heroTimeout = setTimeout( () => {
+			heroRef.current.classList.add('is-viewed');
+		}, 1000 );
+
+	}, []);
 
 	useGSAP( () => {
 		// console.log('START GSAP');
@@ -52,8 +63,6 @@ const Hero = () => {
 			}
 		});
 
-
-
 	}, { scope: heroSlides });
 
 	const backgroundVideoOnEnd = (e) => {
@@ -61,7 +70,7 @@ const Hero = () => {
 	};
 
 	return (
-		<section className="hero">
+		<section className="hero" ref={heroRef}>
 
 			{ HeroContent.primaryHeading && 
 			<div className="hero-intro">
@@ -73,7 +82,13 @@ const Hero = () => {
 						{HeroContent.primaryHeading.split(' ').map( (word) => {
 							return (
 								<span className="hero-primaryHeadingWord">
-									{ word }
+									{ word.split('').map( (letter) => {
+										heroLetterDelay = heroLetterDelay + 0.1;
+											return (
+												<span className="hero-primaryHeadingLetter" style={{transitionDelay:`${heroLetterDelay}s`}}>{ letter }</span>
+											);
+										})
+									}
 								</span>
 							);
 						})}

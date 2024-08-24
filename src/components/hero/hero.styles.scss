@@ -55,6 +55,7 @@
 }
 
 .hero-intro {
+	background-color: $darkest;
 	max-height: 100vh;
 	padding-bottom: 20rem;
 	padding-top: calc(20rem + var(--header-height, 85px));
@@ -66,13 +67,12 @@
 		background-image: url('../../assets/images/slashes-forward-green.svg');
 		background-position: bottom;
     background-repeat: no-repeat;
-		// height: 45px;
-		// width: 348px;
+		height: 90px;
 		position: absolute;
-    right: -1.75%;
+    right: -3rem;
     bottom: 0;
     height: 64px;
-    width: 59%;
+    width: 1076px;
 		z-index: 2;
 	}
 
@@ -84,12 +84,13 @@
 }
 
 .hero-primaryHeading {
-	color: $color-primary;
+	color: $lightest;
 	display: flex;
 	flex-wrap: wrap;
 	line-height: 1;
 	column-gap: .3em;
 	margin: 0;
+	text-shadow: 0 0 3px $darkest;
 	text-transform: uppercase;
 	z-index: 5;
 
@@ -103,10 +104,16 @@
 	font-size: 2em;
 
 	@supports (-webkit-text-stroke: 0.01em $color-primary) {
-		color: $lightest;
 		-webkit-text-stroke: 0.01em $color-primary;
 		text-stroke: 0.01em $color-primary;
 	}
+}
+
+.hero-primaryHeadingLetter {
+	display: inline-block;
+	opacity: 0;
+	transform: translate3d(0, -3rem, 0);
+	transition: opacity 200ms ease-out, transform 200ms ease-out;
 }
 
 .hero-slides {
@@ -114,8 +121,6 @@
 	display: flex;
 	flex-wrap: nowrap;
 }
-
-
 
 
 
@@ -131,4 +136,15 @@
 	position: absolute;
 	bottom: -1.5em;
 	right: 0;
+}
+
+
+
+.hero.is-viewed {
+
+	.hero-primaryHeadingLetter {
+		opacity: 1;
+		transform: translate3d(0, 0, 0);
+	}
+
 }

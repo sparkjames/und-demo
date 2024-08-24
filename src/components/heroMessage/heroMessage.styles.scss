@@ -16,10 +16,10 @@
 	align-items: stretch;
 	display: flex;
 	flex-direction: row-reverse;
-	gap: 3.6rem;
+	// gap: 3.6rem;
 	justify-content: space-between;
-	padding-bottom: 5rem;
-	padding-top: var(--header-height, 85px);
+	padding-bottom: 10rem;
+	padding-top: calc(5rem + var(--header-height, 85px));
 	position: relative;
 	width: 100%;
 
@@ -40,7 +40,6 @@
 
 .hero-backgroundImageContainer {
 	max-width: 50%;
-	padding-top: 15rem;
 	position: relative;
 	width: 100%;
 }
@@ -54,11 +53,13 @@
 }
 
 .hero-contentContainer {
+	// background-color: transparentize($darkest, 0.5);
 	display: flex;
 	flex-direction: column;
-	height: 100%;
+	height: fit-content;
 	justify-content: flex-start;
-	padding-top: 15rem;
+	// left: 10rem;
+	padding: 3rem;
 	position: relative;
 	width: 50%;
 }
