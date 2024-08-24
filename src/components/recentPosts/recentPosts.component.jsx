@@ -60,11 +60,12 @@ const RecentPosts = () => {
 	}, []);
 
 	/**
-	 * Keep an array of posts filtered by the search field and tags.
+	 * Keep a copy of the posts array that gets filtered by the search field and tags.
 	 */
 	useEffect( () => {
 
 		const newFilteredPosts = posts
+			// Filter the posts by the selected tags.
 			.filter( (post) => {
 				let useThisPost = true;
 				if ( selectedTags.length > 0 ) {
@@ -77,9 +78,10 @@ const RecentPosts = () => {
 				}
 				return useThisPost;
 			})
+			// And filter the posts that match the search input value.
 			.filter( (post) => {
 				if ( postSearchFilter ) {
-					if ( post.message.includes(postSearchFilter) ) {
+					if ( post.message.toLowerCase().includes(postSearchFilter.toLowerCase()) ) {
 						return true;
 					}
 					return false;
