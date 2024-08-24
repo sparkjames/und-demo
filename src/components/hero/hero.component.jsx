@@ -57,8 +57,15 @@ const Hero = () => {
 			scrollTrigger: {
 				trigger: heroSlides.current,
 				pin: true,
-				scrub: 1,
+				scrub: 0.01,
 				// snap: 1 / (sections.length - 1),
+				// snap: {
+				// 	snapTo: 1 / (sections.length - 1), // snap to the closest slide
+				// 	duration: { min: 0.2, max: 0.5 }, // the snap animation should be at least 0.2 seconds, but no more than 1 second1 (determined by velocity)
+				// 	delay: 0.2, // wait 0.2 seconds from the last scroll event before doing the snapping
+				// 	ease: 'power1.inOut', // the ease of the snap animation ("power3" by default),
+				// 	inertia: false,
+				// },
 				end: () => "+=" + heroSlides.current.offsetWidth
 			}
 		});
