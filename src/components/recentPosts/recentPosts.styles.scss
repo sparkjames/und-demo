@@ -6,9 +6,65 @@
 	padding-top: 6rem;
 }
 
+.recentPosts-header {
+	align-items: flex-end;
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 2rem;
+	width: 100%;
+}
+
 .recentPosts-primaryHeading {
-	margin-bottom: 0.4em;
+	margin-bottom: 0;
 	text-transform: uppercase;
+}
+
+.recentPosts-viewControls {
+	align-items: center;
+	border: 1px solid $darkest;
+	border-radius: 4px;
+	display: flex;
+	overflow: hidden;
+}
+
+.recentPosts-viewControl {
+	align-items: center;
+	background-color: $lightest;
+	color: $darkest;
+	cursor: pointer;
+	display: flex;
+	padding: .5em;
+	position: relative;
+
+	+ .recentPosts-viewControl {
+		// border-left: 1px solid $darkest;
+	}
+
+	&:has(.recentPosts-viewControlRadio:checked) {
+		background-color: $color-primary;
+		color: $lightest;
+
+		.recentPosts-viewControlIcon {
+			opacity: 1;
+		}
+	}
+}
+
+.recentPosts-viewControlRadio {
+	display: none;
+}
+
+.recentPosts-viewControlIcon {
+	display: block;
+	height: auto;
+	opacity: 0.6;
+	width: 3rem;
+
+	svg {
+		display: block;
+		height: auto;
+		width: 100%;
+	}
 }
 
 .recentPosts-body {
