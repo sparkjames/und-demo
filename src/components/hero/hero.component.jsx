@@ -4,6 +4,8 @@ import HeroContent from '../../content/hero.json';
 
 import { useRef } from 'react';
 
+import YouTube from 'react-youtube';
+
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
   
@@ -12,6 +14,21 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import HeroMessage from '../heroMessage/heroMessage.component';
 
 gsap.registerPlugin(useGSAP,ScrollTrigger);
+
+// controls=0&showinfo=0&rel=0&autoplay=1&loop=1&mute=1
+const youtubeOptions = {
+	height: '480',
+	width: '720',
+	playerVars: {
+		// https://developers.google.com/youtube/player_parameters
+		autoplay: 1,
+		loop: 1,
+		controls: 0,
+		showinfo: 0,
+		mute: 1,
+	},
+};
+const youtubeID = 'AaBW0bOkOv4';
 
 const Hero = () => {
 
@@ -39,20 +56,30 @@ const Hero = () => {
 
 	}, { scope: heroSlides });
 
+	const backgroundVideoOnEnd = (e) => {
+		e.target.playVideo();
+	};
+
 	return (
 		<section className="hero">
 
 			{ HeroContent.primaryHeading && 
-			<div className="hero-intro container">
-				<h1 className="hero-primaryHeading">
-					{HeroContent.primaryHeading.split(' ').map( (word) => {
-						return (
-							<span className="hero-primaryHeadingWord">
-								{ word }
-							</span>
-						);
-					})}
-				</h1>
+			<div className="hero-intro">
+
+				<YouTube className="hero-backgroundContainer" videoId={youtubeID} opts={youtubeOptions} onEnd={backgroundVideoOnEnd} />
+
+				<div className="hero-introContainer container">
+					<h1 className="hero-primaryHeading">
+						{HeroContent.primaryHeading.split(' ').map( (word) => {
+							return (
+								<span className="hero-primaryHeadingWord">
+									{ word }
+								</span>
+							);
+						})}
+					</h1>
+				</div>
+
 			</div>
 			}
 

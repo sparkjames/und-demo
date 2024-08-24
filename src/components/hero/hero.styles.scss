@@ -5,9 +5,58 @@
 	position: relative;
 }
 
+/**
+ * Explainer for forcing the iframe to act like `object-fit: cover`:
+ * @link https://stackoverflow.com/questions/24579785/force-iframe-youtube-video-to-center-fit-and-full-cover-the-screen-in-the-backgr
+ **/
+.hero-backgroundContainer {
+	height: 100%;
+	left: 0;
+  overflow: hidden;
+	pointer-events: none;
+	position: absolute;
+	top: 0;
+	width: 100%;
+	z-index: 1;
+
+	&::before {
+		content: '';
+		display: block;
+		background-color: $darkest;
+		opacity: 0.5;
+		position: absolute;
+		left: 0;
+		top: 0;
+		height: 100%;
+		width: 100%;
+		z-index: 2;
+	}
+
+	iframe {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		width: 100vw;
+		height: 100vh;
+		transform: translate(-50%, -50%);
+		z-index: 1;
+
+		@media (min-aspect-ratio: 16/9) {
+			/* height = 100 * (9 / 16) = 56.25 */
+			height: 56.25vw;
+		}
+
+		@media (max-aspect-ratio: 16/9) {
+			/* width = 100 / (9 / 16) = 177.777777 */
+			width: 177.78vh;
+		}
+
+	}
+}
+
 .hero-intro {
-	padding-bottom: 15rem;
-	padding-top: calc(15rem + var(--header-height, 85px));
+	padding-bottom: 16rem;
+	padding-top: calc(16rem + var(--header-height, 85px));
 	position: relative;
 
 	&::before {
@@ -19,12 +68,18 @@
 		// height: 45px;
 		// width: 348px;
 		position: absolute;
-    right: -1rem;
+    right: -1.75%;
     bottom: 0;
     height: 64px;
     width: 59%;
+		z-index: 2;
 	}
 
+}
+
+.hero-introContainer {
+	position: relative;
+	z-index: 2;
 }
 
 .hero-primaryHeading {
