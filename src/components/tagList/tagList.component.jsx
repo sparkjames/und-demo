@@ -31,7 +31,7 @@ const addTag = ( tags = [], tagNameToAdd ) => {
 const TagList = ( {posts} ) => {
 
 	const [tags, setTags] = useState([]);
-	const [showAllTags, setShowAllTags] = useState(10);
+	const [showAllTags, setShowAllTags] = useState(undefined);
 
 	/**
 	 * Toggle whether or not all the tags are showing, or just the top 10.
