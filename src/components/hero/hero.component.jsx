@@ -37,13 +37,9 @@ const Hero = () => {
 	const heroRef = useRef();
 	const heroSlides = useRef();
 
-	useEffect( () => {
-
-		const heroTimeout = setTimeout( () => {
-			heroRef.current.classList.add('is-viewed');
-		}, 1000 );
-
-	}, []);
+	const backgroundVideoOnReady = () => {
+		heroRef.current.classList.add('is-viewed');
+	};
 
 	useGSAP( () => {
 		// console.log('START GSAP');
@@ -82,7 +78,7 @@ const Hero = () => {
 			{ HeroContent.primaryHeading && 
 			<div className="hero-intro">
 
-				<YouTube className="hero-backgroundContainer" videoId={youtubeID} opts={youtubeOptions} onEnd={backgroundVideoOnEnd} />
+				<YouTube className="hero-backgroundContainer" videoId={youtubeID} opts={youtubeOptions} onEnd={backgroundVideoOnEnd} onReady={backgroundVideoOnReady} />
 
 				<div className="hero-introContainer container">
 					<h1 className="hero-primaryHeading">
