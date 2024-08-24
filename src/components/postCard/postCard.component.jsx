@@ -4,7 +4,7 @@ import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import ReplayIcon from '@mui/icons-material/Replay';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 
-const PostCard = ( {post} ) => {
+const PostCard = ( {post, viewType} ) => {
 
 	// Pull all of the post properties.
 	const { date, message, author, image, username, location, likes, reposts } = post;
@@ -19,7 +19,7 @@ const PostCard = ( {post} ) => {
 	} );
 
 	return (
-		<article className="postCard">
+		<article className={`postCard postCard--${viewType}`}>
 
 			<p className="postCard-message">{ message }</p>
 

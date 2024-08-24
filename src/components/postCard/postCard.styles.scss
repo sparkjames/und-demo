@@ -15,29 +15,12 @@
 		.postCard-footer {
 			max-height: 100px;
 			opacity: 1;
+			padding-bottom: 1.4rem;
+			padding-top: 1.4rem;
 			pointer-events: initial;
 			transform: translate3d(0,0,0);
 		}
 	}
-}
-
-.postCard-header {
-	background-color: $color-secondary;
-	font-size: 1.4rem;
-	display: flex;
-	gap: 1rem;
-	margin-bottom: 1rem;
-	padding-bottom: 2rem;
-	padding-left: 2rem;
-	padding-right: 2rem;
-	padding-top: 2rem;
-}
-
-.postCard-date {
-	@include postCard-padding();
-	font-size: 1.3rem;
-	margin-bottom: 1em;
-	opacity: 0.7;
 }
 
 .postCard-message {
@@ -80,6 +63,13 @@
 	grid-row: 2 / 3;
 }
 
+.postCard-date {
+	@include postCard-padding();
+	font-size: 1.3rem;
+	margin-bottom: 1em;
+	opacity: 0.7;
+}
+
 
 
 .postCard-footer {
@@ -89,8 +79,8 @@
 	left: 0;
 	max-height: 0;
 	opacity: 0;
-	padding-bottom: 1.4rem;
-	padding-top: 1.4rem;
+	// padding-bottom: 1.4rem;
+	// padding-top: 1.4rem;
 	pointer-events: none;
 	top: 100%;
 	transform: translate3d(0, -1rem, 0);
@@ -182,4 +172,34 @@
 	line-height: 1;
 	height: 1.6em;
 	width: 1.6em;
+}
+
+
+
+/**
+ * Different views - condensed or detailed
+ **/
+.postCard--detailed {
+
+}
+
+.postCard--condensed {
+
+	.postCard-message {
+		font-size: 1.6rem;
+	}
+
+	.postCard-figure {
+		display: none;
+	}
+
+	.postCard-userInfo {
+		display: block;
+		margin-bottom: 1rem;
+	}
+
+	.postCard-author {
+		font-size: 1.6rem;
+	}
+
 }

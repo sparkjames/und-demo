@@ -23,6 +23,7 @@ const RecentPosts = () => {
 	const [posts, setPosts] = useState([]);
 	const [filteredPosts, setFilteredPosts] = useState([]);
 	const [postViewType, setPostViewType] = useState('detailed');
+	const [columnBreakpoints, setColumnBreakpoints] = useState({ 820: 2, 1120: 3, 1360: 4 })
 
 	// Get the array of selected tags to filter the grid of posts.
 	const { selectedTags } = useContext( TagFiltersContext );
@@ -94,6 +95,18 @@ const RecentPosts = () => {
 		setPostViewType( e.target.value );
 	};
 
+	useEffect( () => {
+		const detailedBreakpoints = { 820: 2, 1120: 3, 1360: 4 };
+		const condensedBreakpoints = { 720: 2, 1020: 3, 1260: 4 };
+
+		if ( postViewType === 'condensed' ) {
+			setColumnBreakpoints(condensedBreakpoints);
+
+		} else {
+			setColumnBreakpoints(detailedBreakpoints);
+		}
+	}, [postViewType]);
+
 	return (
 		<section className={`recentPosts recentPosts--${postViewType}`}>
 			<div className="recentPosts-container container">
@@ -128,11 +141,11 @@ const RecentPosts = () => {
 
 					{ filteredPosts.length > 0 && 
 					<ResponsiveMasonry
-					columnsCountBreakPoints={{ 720: 2, 1020: 3, 1260: 4 }} className="recentPosts-gridContainer">
+					columnsCountBreakPoints={columnBreakpoints} className="recentPosts-gridContainer">
 						<Masonry columnsCount={4} gutter="40px" className="recentPosts-grid">
 							{ filteredPosts.map( (thisPost) => {
 								return (
-										<PostCard key={thisPost.id} post={thisPost}></PostCard>
+										<PostCard key={thisPost.id} post={thisPost} viewType={postViewType}></PostCard>
 									);
 								})
 							}
