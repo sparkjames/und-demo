@@ -85,7 +85,6 @@ const Hero = () => {
 
 			{ HeroContent.content.length > 0 && 
 			<div className="hero-slides" ref={heroSlides} style={ { width: `calc(100% * ${HeroContent.content.length})` } }>
-				<h1>TEST</h1>
 				{ HeroContent.content.map( (heroMessage, i) => {
 					return (
 						<HeroMessage key={i} message={heroMessage}></HeroMessage>

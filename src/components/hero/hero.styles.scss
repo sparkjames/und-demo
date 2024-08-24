@@ -55,8 +55,9 @@
 }
 
 .hero-intro {
-	padding-bottom: 16rem;
-	padding-top: calc(16rem + var(--header-height, 85px));
+	max-height: 100vh;
+	padding-bottom: 20rem;
+	padding-top: calc(20rem + var(--header-height, 85px));
 	position: relative;
 
 	&::before {
