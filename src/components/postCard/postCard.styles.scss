@@ -30,6 +30,10 @@
 	padding-top: 2rem;
 }
 
+.postCard-tag {
+	cursor: pointer;
+}
+
 .postCard-userInfo {
 	@include postCard-padding();
 	display: grid;

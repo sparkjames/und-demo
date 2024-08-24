@@ -2,7 +2,7 @@ import './hero.styles.scss';
 
 import HeroContent from '../../content/hero.json';
 
-import { useEffect, useRef } from 'react';
+import { useRef } from 'react';
 
 import YouTube from 'react-youtube';
 

@@ -4,10 +4,20 @@ import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import ReplayIcon from '@mui/icons-material/Replay';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 
+// import reactStringReplace from 'react-string-replace';
+import flexibleStringReplace from '@rpearce/flexible-string-replace'
+
+import { TagFiltersContext } from '../../contexts/tagFilters.context';
+import { useContext } from 'react';
+
+const tagPattern = /#[\S][^,;!.? ]+/g;
 const PostCard = ( {post, viewType} ) => {
 
 	// Pull all of the post properties.
 	const { date, message, author, image, username, location, likes, reposts } = post;
+
+	// Get function
+	const { selectedTags, onTagSelected, onTagDeselected } = useContext( TagFiltersContext );
 
 	// Format the date to be more readable.
 	const dateObj = new Date( date );
@@ -18,10 +28,26 @@ const PostCard = ( {post, viewType} ) => {
 		timeStyle: "short"
 	} );
 
+	const tagOnClick = (e) => {
+		const thisTag = e.target.dataset.tag;
+		console.log(thisTag);
+		if ( selectedTags.indexOf( thisTag ) >= 0 ){
+			onTagDeselected( thisTag );
+		} else {
+			onTagSelected( thisTag );
+		}
+	};
+
+	const tagReplacement = (match, offset) => <span key={offset} className="postCard-tag" data-tag={match} onClick={tagOnClick}>{match}</span>
+
 	return (
 		<article className={`postCard postCard--${viewType}`}>
 
-			<p className="postCard-message">{ message }</p>
+			<p className="postCard-message">
+				{
+					flexibleStringReplace( tagPattern, tagReplacement, message )
+				}
+				</p>
 
 			<div className="postCard-userInfo">
 				{ image &&
