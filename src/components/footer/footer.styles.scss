@@ -5,6 +5,7 @@ $breakpoint-footer-columns: 700px;
 	background-color: $darkest;
 	padding-bottom: 7rem;
 	padding-top: 7rem;
+	position: relative;
 }
 
 .siteFooter-container {
@@ -15,6 +16,10 @@ $breakpoint-footer-columns: 700px;
 	@media screen and (max-width: $breakpoint-footer-columns ) {
     grid-template-columns: 1fr;
 	}
+}
+
+.siteFooter-column {
+	position: relative;
 }
 
 
@@ -61,5 +66,28 @@ $breakpoint-footer-columns: 700px;
 		flex-direction: row;
 		flex-wrap: wrap;
 		gap: 1em;
+	}
+}
+
+
+
+.siteFooter-column--nav {
+	&::before {
+		content: '';
+		display: block;
+		background-image: url('../../assets/images/slashes-forward-white.svg');
+		background-position: bottom;
+    background-repeat: no-repeat;
+		height: 90px;
+		position: absolute;
+    right: 3rem;
+    top: 0;
+    height: 64px;
+    width: 1076px;
+		z-index: 2;
+
+		@media screen and (max-width: $breakpoint-footer-columns ) {
+			display: none;
+		}
 	}
 }
