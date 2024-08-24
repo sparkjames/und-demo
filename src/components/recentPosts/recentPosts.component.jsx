@@ -43,7 +43,7 @@ const RecentPosts = () => {
 		 */
 		const todayDate = new Date();
 		const twoDaysAgoDate = new Date();
-		twoDaysAgoDate.setDate( twoDaysAgoDate.getDate() - 9);
+		twoDaysAgoDate.setDate( twoDaysAgoDate.getDate() - 2);
 
 		const startDate = twoDaysAgoDate.toISOString().split('T')[0];
 		const endDate = todayDate.toISOString().split('T')[0];
