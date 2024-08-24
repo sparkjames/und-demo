@@ -42,11 +42,19 @@ const Hero = () => {
 	return (
 		<section className="hero">
 
-			<div className="hero-intro">
-				<h1 className="hero-primaryHeading container">
-					{HeroContent.primaryHeading}
+			{ HeroContent.primaryHeading && 
+			<div className="hero-intro container">
+				<h1 className="hero-primaryHeading">
+					{HeroContent.primaryHeading.split(' ').map( (word) => {
+						return (
+							<span className="hero-primaryHeadingWord">
+								{ word }
+							</span>
+						);
+					})}
 				</h1>
 			</div>
+			}
 
 			{ HeroContent.content.length > 0 && 
 			<div className="hero-slides" ref={heroSlides} style={ { width: `calc(100% * ${HeroContent.content.length})` } }>

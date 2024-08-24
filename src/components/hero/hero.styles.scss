@@ -8,36 +8,48 @@
 .hero-intro {
 	padding-bottom: 15rem;
 	padding-top: calc(15rem + var(--header-height, 85px));
-
-}
-
-.hero-primaryHeading {
-	color: $color-primary;
-	// left: calc((100vw - #{$container-default}) / 2);
-	padding: 0;
-	// position: absolute;
-	text-align: center;
-	text-transform: uppercase;
-	// top: calc(3rem + var(--header-height, 85px));
-	z-index: 5;
-
-	@media screen and (max-width: 1320px ) {
-		left: $container-padding-default;
-	}
+	position: relative;
 
 	&::before {
 		content: '';
 		display: block;
-		background-image: url('../../assets/images/slashes-forward-white.svg');
+		background-image: url('../../assets/images/slashes-forward-green.svg');
 		background-position: bottom;
     background-repeat: no-repeat;
 		// height: 45px;
 		// width: 348px;
 		position: absolute;
-    left: calc(100% + .25em);
-    bottom: .25em;
-    height: 1em;
-    width: 100%;
+    right: -1rem;
+    bottom: 0;
+    height: 64px;
+    width: 59%;
+	}
+
+}
+
+.hero-primaryHeading {
+	color: $color-primary;
+	display: flex;
+	flex-wrap: wrap;
+	line-height: 1;
+	column-gap: .3em;
+	margin: 0;
+	text-transform: uppercase;
+	z-index: 5;
+
+	@media screen and (max-width: 1320px ) {
+		left: $container-padding-default;
+	}
+}
+
+.hero-primaryHeadingWord:last-child {
+	flex-basis: 100%;
+	font-size: 2em;
+
+	@supports (-webkit-text-stroke: 0.01em $color-primary) {
+		color: $lightest;
+		-webkit-text-stroke: 0.01em $color-primary;
+		text-stroke: 0.01em $color-primary;
 	}
 }
 
