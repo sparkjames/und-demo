@@ -94,10 +94,13 @@
 	margin: 0;
 	text-shadow: 0 0 3px $darkest;
 	text-transform: uppercase;
-	z-index: 5;
 
 	@media screen and (max-width: 1320px ) {
 		left: $container-padding-default;
+	}
+
+	@media screen and (max-width: 800px ) {
+		font-size: 10vw;
 	}
 }
 
