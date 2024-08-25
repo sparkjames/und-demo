@@ -98,8 +98,8 @@ const RecentPosts = () => {
 	};
 
 	useEffect( () => {
-		const detailedBreakpoints = { 820: 2, 1120: 3, 1360: 4 };
-		const condensedBreakpoints = { 720: 2, 1020: 3, 1260: 4 };
+		const detailedBreakpoints = { 580: 1, 820: 2, 1120: 3, 1360: 4 };
+		const condensedBreakpoints = { 640: 1, 720: 2, 1020: 3, 1260: 4 };
 
 		if ( postViewType === 'condensed' ) {
 			setColumnBreakpoints(condensedBreakpoints);
