@@ -10,6 +10,10 @@ $breakpoint-hero-message-single-col: 800px;
 	position: relative;
 	transition: transform 500ms ease-out;
 	width: 100%;
+
+	@media screen and (max-height: 820px ) {
+    min-height: none;
+	}
 }
 
 .hero-message--light {
@@ -141,6 +145,10 @@ $breakpoint-hero-message-single-col: 800px;
 	@media screen and (max-width: $breakpoint-hero-message-single-col ) {
 		font-size: 4.4rem;
 	}
+
+	@media screen and (max-width: 500px ) {
+    font-size: 3.2rem;
+	}
 }
 
 .hero-subheading {
@@ -161,6 +169,10 @@ $breakpoint-hero-message-single-col: 800px;
 	font-size: 1.8rem;
 	margin-top: 0.7em;
 	padding-top: 1.4em;
+
+	@media screen and (max-width: 500px ) {
+    font-size: 1.6rem;
+	}
 }
 
 // .hero-heading + .hero-description {

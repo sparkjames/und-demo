@@ -15,7 +15,11 @@ import HeroMessage from '../heroMessage/heroMessage.component';
 
 gsap.registerPlugin(useGSAP,ScrollTrigger);
 
-// controls=0&showinfo=0&rel=0&autoplay=1&loop=1&mute=1
+/**
+ * Set up some defaults for the YouTube embed, which 
+ * will remove everything like the play button, position
+ * bar, and add looping.
+ */
 const youtubeOptions = {
 	height: '480',
 	width: '720',
@@ -37,10 +41,21 @@ const Hero = () => {
 	const heroRef = useRef();
 	const heroSlides = useRef();
 
+	/**
+	 * When the YouTube background video loads, trigger the
+	 * animations on the hero intro by adding a class to the hero.
+	 * CSS will do the transition animations.
+	 */
 	const backgroundVideoOnReady = () => {
 		heroRef.current.classList.add('is-viewed');
 	};
 
+	/**
+	 * Set up a scroll trigger to allow the hero messages 
+	 * to scroll horizontally. The "slides" get placed horizontally
+	 * via CSS. GSAP uses the mouse scrolling to do translateX on
+	 * all the panels, giving the appearance of horizontal scroll.
+	 */
 	useGSAP( () => {
 		// console.log('START GSAP');
 		// console.log('heroMessages = ', heroSlides.current);
@@ -54,20 +69,18 @@ const Hero = () => {
 				trigger: heroSlides.current,
 				pin: true,
 				scrub: 0.01,
-				// snap: 1 / (sections.length - 1),
-				// snap: {
-				// 	snapTo: 1 / (sections.length - 1), // snap to the closest slide
-				// 	duration: { min: 0.2, max: 0.5 }, // the snap animation should be at least 0.2 seconds, but no more than 1 second1 (determined by velocity)
-				// 	delay: 0.2, // wait 0.2 seconds from the last scroll event before doing the snapping
-				// 	ease: 'power1.inOut', // the ease of the snap animation ("power3" by default),
-				// 	inertia: false,
-				// },
 				end: () => "+=" + heroSlides.current.offsetWidth
 			}
 		});
 
 	}, { scope: heroSlides });
 
+	/**
+	 * The video does not honor the loop=1 parameter,
+	 * so force the video to replay when it finishes playing.
+	 * 
+	 * @param {Event} e Event from addEventListener.
+	 */
 	const backgroundVideoOnEnd = (e) => {
 		e.target.playVideo();
 	};
@@ -82,13 +95,17 @@ const Hero = () => {
 
 				<div className="hero-introContainer container">
 					<h1 className="hero-primaryHeading">
-						{HeroContent.primaryHeading.split(' ').map( (word) => {
+						{HeroContent.primaryHeading.split(' ').map( (word, i) => {
+							/**
+							 * Separate the primary heading by word and letter so
+							 * the styles and animations can be done.
+							 */
 							return (
-								<span className="hero-primaryHeadingWord">
-									{ word.split('').map( (letter) => {
+								<span key={i} className="hero-primaryHeadingWord">
+									{ word.split('').map( (letter, j) => {
 										heroLetterDelay = heroLetterDelay + 0.1;
 											return (
-												<span className="hero-primaryHeadingLetter" style={{transitionDelay:`${heroLetterDelay}s`}}>{ letter }</span>
+												<span key={j} className="hero-primaryHeadingLetter" style={{transitionDelay:`${heroLetterDelay}s`}}>{ letter }</span>
 											);
 										})
 									}
