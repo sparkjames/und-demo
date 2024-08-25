@@ -12,7 +12,7 @@ $breakpoint-hero-message-single-col: 800px;
 	width: 100%;
 
 	@media screen and (max-height: 820px ) {
-    min-height: none;
+    min-height: 0;
 	}
 }
 
@@ -52,7 +52,7 @@ $breakpoint-hero-message-single-col: 800px;
     // flex-direction: column;
 		align-items: flex-end;
 		justify-content: flex-end;
-		padding-bottom: 6rem;
+		padding-bottom: 2rem;
 		padding-right: 4rem;
 	}
 
@@ -113,14 +113,13 @@ $breakpoint-hero-message-single-col: 800px;
 	z-index: 2;
 
 	@media screen and (max-width: $breakpoint-hero-message-single-col ) {
-    // flex-basis: 25%;
-		// max-width: 75%;
-		// height: 25%;
 		flex-basis: 75%;
+		height: 100%;
+		max-height: 80%;
 		max-width: 75%;
 		position: absolute;
 		right: 0;
-		top: 0;
+		top: var(--header-height, 85px);
 	}
 }
 
