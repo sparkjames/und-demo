@@ -115,3 +115,18 @@ html.nav-is-open {
 			transform: translate3d(0, 0, 0);
 		}
 }
+
+
+
+
+@media screen and (max-width: $breakpoint-header-hamburger) {
+  html.nav-is-open {
+    height: 100%;
+    overflow: hidden;
+
+    // body {
+    //   height: 100%;
+    //   overflow: hidden;
+    // }
+  }
+}
