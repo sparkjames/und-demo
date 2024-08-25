@@ -1,9 +1,12 @@
 import './header.styles.scss';
 import { ReactComponent as Logo } from '../../assets/images/logotype-full-compressed.svg';
 
+import MenuIcon from '@mui/icons-material/Menu';
+import CloseIcon from '@mui/icons-material/Close';
+
 import MainNav from '../../content/main-nav.json';
 
-import { useEffect, useRef, useState } from 'react';
+import { Fragment, useEffect, useRef, useState } from 'react';
 
 import { jp_scrollDirection } from '../../assets/js/jpScrollDirection';
 
@@ -12,6 +15,7 @@ const Header = () => {
 	const headerEl = useRef(null);
 	const [headerIsScrolledPast, setHeaderIsScrolledPast] = useState(false);
 	const [headerIsSticky, setHeaderIsSticky] = useState(true);
+	const [mobileNavIsVisible, setMobileNavIsVisible] = useState(false);
 
 	useEffect( () => {
 		// There is a CSS custom property `--header-height` that controls the size/position of the mega nav. The height must be updated when the window is resized or scrolled, since the height of the header can change after either of those events.
@@ -54,6 +58,20 @@ const Header = () => {
 
 	}, []);
 
+	/**
+	 * Toggle the mobile nav when it's visible.
+	 */
+	const toggleNavOnClick = () => {
+		if ( mobileNavIsVisible ) {
+			document.documentElement.classList.remove('nav-is-open');
+
+		} else {
+			document.documentElement.classList.add('nav-is-open');
+		}
+		
+		setMobileNavIsVisible( ! mobileNavIsVisible );
+	};
+
 	return (
 		<header className={`siteHeader ${headerIsScrolledPast ? 'is-scrolled-past' : '' } ${headerIsSticky ? 'is-sticky' : '' }`} ref={headerEl}>
 			<div className="siteHeader-container container">
@@ -63,13 +81,21 @@ const Header = () => {
 				</a>
 
 				{ MainNav.links.length > 0 && 
-				<nav className="siteHeader-nav">
-					{ MainNav.links.map( (navLink, i) => {
-						return (
-						<a key={i} href={navLink.url} className="siteHeader-navLink">{navLink.title}</a>
-						)
-					})}
-				</nav>
+				<Fragment>
+					<button className="siteHeader-toggleNav" type="button" onClick={toggleNavOnClick}>
+						<MenuIcon className="siteHeader-toggleNavIcon"></MenuIcon>
+					</button>
+					<nav className="siteHeader-nav">
+						<button className="siteHeader-toggleNav siteHeader-toggleNav--close" type="button" onClick={toggleNavOnClick}>
+							<CloseIcon className="siteHeader-toggleNavIcon"></CloseIcon>
+						</button>
+						{ MainNav.links.map( (navLink, i) => {
+							return (
+							<a key={i} href={navLink.url} className="siteHeader-navLink">{navLink.title}</a>
+							)
+						})}
+					</nav>
+				</Fragment>
 				}
 
 			</div>
